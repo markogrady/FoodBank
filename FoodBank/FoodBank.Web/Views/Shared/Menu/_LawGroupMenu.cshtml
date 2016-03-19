@@ -1,0 +1,7 @@
+﻿
+<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+<li class="@(ViewBag.MenuItem == "Dashboard" ? "active" : "")"><a href="@Url.Action("Index","Dashboard",new {area="Surveyor"})"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+<li class="@(ViewBag.MenuItem == "Exchanges" ? "active" : "")"><a href="@Url.Action("Index","Exchange",new {area="Surveyor"})"><i class="icon-list-unordered"></i> <span>Exchanges</span></a></li>
+<li class="@(ViewBag.MenuItem == "Settings" ? "active" : "")"><a href="@Url.Action("Index","Setting",new {area="Surveyor"})"><i class="icon-list-unordered"></i> <span>Settings</span></a></li>
+<li class="@(ViewBag.MenuItem == "Help" ? "active" : "")"><a href="@Url.Action("Index", "Help", new {area = ""})"><i class="icon-list-unordered"></i> <span>Help</span></a></li>
+<li><a onclick="$('#logoutForm1').submit();"><i class="icon-switch2"></i> <span>Logout</span></a></li>

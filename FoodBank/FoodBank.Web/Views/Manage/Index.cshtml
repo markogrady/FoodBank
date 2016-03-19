@@ -1,0 +1,115 @@
+﻿@using FoodBank.Web.Helpers
+@model FoodBank.Web.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+    ViewBag.MenuItem = "UserSettings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pageJs{
+
+
+    <script type="text/javascript" src="/assets/js/plugins/uploaders/fileinput.min.js"></script>
+    <script type="text/javascript" src="/assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="/assets/js/core/app.js"></script>
+    <script type="text/javascript" src="/assets/js/pages/form_inputs.js"></script>
+    <script type="text/javascript" src="/assets/js/pages/uploader_bootstrap.js"></script>
+
+    <script>
+        $("#avatar").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="@ViewBag.Avatar" alt="Your Avatar" style="width:160px">',
+            layoutTemplates: { main2: '{preview} {remove} {browse}' },
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+    </script>
+
+
+}
+<!-- Page header -->
+@Html.Partial("Page/PageHeader")
+<!-- /page header -->
+<!-- Content area -->
+<!-- Content area -->
+<div class="content">
+    <!-- Form horizontal -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">@ViewBag.Title</h5>
+            <div class="heading-elements">
+                <ul class="icons-list"></ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Index", "Manage", new { area = "" }, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+
+            {
+                <fieldset class="content-group">
+                    @Html.TtcFullTextBoxFor(o => o.FirstName, "Firstname")
+                    @Html.TtcFullTextBoxFor(o => o.LastName, "Lastname")
+                    @if (Model.HasPassword)
+                    {
+                        @Html.TtcFullLinkTextBox("Password", Html.ActionLink("Change your password", "ChangePassword"))
+                    }
+                    else
+                    {
+                        @Html.TtcFullLinkTextBox("Password", Html.ActionLink("Create", "SetPassword"))
+                    }
+
+
+
+                    @if (Model.PhoneNumber != null)
+                    {
+                        @Html.TtcFullLinkTextBox("Phone Number", @Html.ActionLink("Change", "AddPhoneNumber")) @Html.ActionLink("Remove", "RemovePhoneNumber") @(Model.PhoneNumber ?? "None")
+                    }
+                    else
+                    {
+                        @Html.TtcFullLinkTextBox("Phone Number", @Html.ActionLink("Add", "AddPhoneNumber"))
+                    }
+
+                    <img src="@ViewBag.Avatar" src="avatar"/>
+                    @Html.TtcUpload(o => o.AvatarUpload, new List<string>() {"jpg","jpeg","png"})
+                    @*<dt>Two-Factor Authentication:</dt>
+                        <dd>
+
+                            @if (Model.TwoFactor)
+                            {
+                                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <text>Enabled
+                                        <input type="submit" value="Disable" class="btn btn-link"/>
+                                    </text>
+                                }
+                            }
+                            else
+                            {
+                                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <text>Disabled
+                                        <input type="submit" value="Enable" class="btn btn-link"/>
+                                    </text>
+                                }
+                            }
+                        </dd>*@
+
+                </fieldset>
+                @Html.TtcSaveRight()
+            }
+        </div>
+    </div>
+    <!-- /form horizontal -->
+
+</div>
+<!-- /content area -->

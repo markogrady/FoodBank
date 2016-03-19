@@ -1,0 +1,21 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    ViewBag.Title = "CheckEmail";
+}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel registration-form">
+            <div class="panel-body">
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300">
+                        <img src="~/assets/icons/android-icon-72x72.png" />
+                    </div>
+                    <h2 class="content-group-lg">Thank you for confirming your email</h2>
+                    <h3> Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

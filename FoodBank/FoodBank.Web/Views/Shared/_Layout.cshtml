@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Law Toolbox - @ViewBag.Title</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/minified/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/minified/core.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/minified/components.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/minified/colors.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- /global stylesheets -->
+    <style>
+        .kv-avatar .file-preview-frame, .kv-avatar .file-preview-frame:hover {
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        .kv-avatar .file-input {
+            display: table-cell;
+            max-width: 220px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-default header-highlight">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="@Url.Action("Index","Home",new {area=""})"><img src="/assets/images/logo_light.png" alt=""></a>
+
+            <ul class="nav navbar-nav visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav">
+                <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+
+
+            </ul>
+
+            <p class="navbar-text"><span class="label bg-success">Online</span></p>
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+             
+                <li class="dropdown dropdown-user">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="@ViewBag.Avatar" alt="">
+                        <span>@ViewBag.FullName</span>
+                        <i class="caret"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="@Url.Action("Index","Manage", new {area=""})"><i class="icon-user-plus"></i> My profile</a></li>
+                        
+                      
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+                        <li><a id="logoff1" onclick="$('#logoutForm1').submit();"><i class="icon-switch2"></i> Logout</a></li>
+                        @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm1" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        }
+
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main">
+                <div class="sidebar-content">
+
+                    <!-- User menu -->
+                    <div class="sidebar-user">
+                        <div class="category-content">
+                            <div class="media">
+                                <a href="#" class="media-left"><img src="@ViewBag.Avatar" class="img-circle img-sm" alt=""></a>
+                                <div class="media-body">
+                                    <span class="media-heading text-semibold">@ViewBag.FullName</span>
+                                    <div class="text-size-mini text-muted">@ViewBag.CompanyName</div>
+                                    </div>
+
+                                <div class="media-right media-middle">
+                                    <ul class="icons-list">
+                                        <li>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /user menu -->
+                    <!-- Main navigation -->
+                    <div class="sidebar-category sidebar-category-visible">
+                        <div class="category-content no-padding">
+                            <ul class="navigation navigation-main navigation-accordion">
+
+                                @{
+                                    <!-- done this way to potentially allow people in multiple roles -->
+                                    var area = (string)ViewContext.RouteData.DataTokens["area"];
+                                    if (!String.IsNullOrEmpty(area))
+                                    {
+                                        switch (area.ToLower())
+                                        {
+                                            case "client":
+                                                @Html.Partial("~/Views/Shared/Menu/_ClientMenu.cshtml")
+                                                break;
+                                            case "firm":
+                                                @Html.Partial("~/Views/Shared/Menu/_LawyerMenu.cshtml")
+                                                break;
+                                            default:
+                                                @Html.Partial("~/Views/Shared/Menu/_GeneralMenu.cshtml")
+
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (User.IsInRole("Lawyer"))
+                                        {
+                                            @Html.Partial("~/Views/Shared/Menu/_LawyerMenu.cshtml")
+                                        }
+                                        if (User.IsInRole("LawGroup"))
+                                        {
+                                            @Html.Partial("~/Views/Shared/Menu/_LawGroupMenu.cshtml")
+                                        }
+                                        if (User.IsInRole("Client"))
+                                        {
+                                            @Html.Partial("~/Views/Shared/Menu/_ClientMenu.cshtml")
+                                        }
+                                        if (User.IsInRole("Administrator"))
+                                        {
+                                            @Html.Partial("~/Views/Shared/Menu/_GeneralMenu.cshtml")
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /main navigation -->
+
+                </div>
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+                @RenderBody()
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+    <!-- Core JS files -->
+
+    <script type="text/javascript" src="/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/plugins/loaders/blockui.min.js"></script>
+    <script type="text/javascript" src="/assets/js/plugins/notifications/pnotify.min.js"></script>
+    <!-- /core JS files -->
+    <!--  JS files -->
+    @RenderSection("pagejs", required: false)
+    
+    <!-- / JS files -->
+
+    <script>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text> new PNotify({ title: 'Success', text: '@TempData["SuccessMessage"]', addclass: 'bg-success' });         </text>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <text> new PNotify({ title: 'Success', text: '@TempData["ErrorMessage"]', addclass: 'bg-danger' });         </text>
+        }
+        @if (TempData["InformationMessage"] != null)
+        {
+            <text> new PNotify({ title: 'Success', text: '@TempData["InformationMessage"]', addclass: 'bg-primary' });         </text>
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿
+<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+<li class="@(ViewBag.MenuItem == "Dashboard" ? "active" : "")"><a href="@Url.Action("Index","Dashboard", new {area="Accountant"})"><i class="icon-grid"></i> <span>Dashboard</span></a></li>
+
+<li class="@(ViewBag.MenuItem == "Invoices" ? "active" : "")"><a href=""><i class="icon-piggy-bank"></i> <span>Invoices</span></a></li>
+@*<li class="@(ViewBag.MenuItem == "Vacancies" ? "active" : "")"><a href="#"><i class="icon-reading"></i> <span>Vacancies</span></a></li>*@
+<li>
+    <a href="#"><i class="icon-gear"></i> <span>Settings</span></a>
+    <ul>
+        @*<li class="@(ViewBag.MenuItem == "GeneralSettings" ? "active" : "")"><a href="@Url.Action("Index", "Setting", new {area = "Agent"})">General</a></li>
+        <li class="@(ViewBag.MenuItem == "NotificationSettings" ? "active" : "")"><a href="@Url.Action("Notifications", "Setting", new {area = "Agent"})">Notifications</a></li>
+        <li class="@(ViewBag.MenuItem == "AgencySettings" ? "active" : "")"><a href="@Url.Action("Edit", "Agency", new {area = "Agent"})">Agency</a></li>
+        <li class="@(ViewBag.MenuItem == "Payment" ? "active" : "")"><a href="@Url.Action("Index", "Payments", new {area = "Agent"})">Payments</a></li>*@
+        <li class="@(ViewBag.MenuItem == "UserSettings" ? "active" : "")"><a href="@Url.Action("Index", "Manage", new {area = ""})">User Details</a></li>
+
+
+    </ul>
+</li>
+<li><a onclick="$('#logoutForm1').submit();"><i class="icon-switch2"></i> <span>Logout</span></a></li>

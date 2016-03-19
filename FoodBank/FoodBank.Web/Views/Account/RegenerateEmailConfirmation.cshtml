@@ -1,0 +1,9 @@
+﻿@model FoodBank.Web.Models.RegenerateEmailConfirmation
+    @{
+        Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    }
+@using (Html.BeginForm())
+{
+    @Html.TextBoxFor(o =>o.Email)
+    <input type ="submit"/>
+}

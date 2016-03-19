@@ -1,0 +1,179 @@
+﻿@model FoodBank.Core.Dto.Affiliate.RegisterAffiliateModel
+@{
+    ViewBag.Title = "Register Affiliate";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+@using (Html.BeginForm("RegisterAffiliate", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="panel registration-form">
+                <div class="panel-body">
+                    <div class="text-center">
+                        <div class="icon-object border-slate-300 text-slate-300">
+                            <img src="~/assets/icons/android-icon-72x72.png" />
+                        </div>
+                        <h5 class="content-group-lg">Create account <small class="display-block">All fields are required</small></h5>
+
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "EmailAddress" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        <div class="form-control-feedback">
+                            <i class="icon-user-plus text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "FirstName" })
+                                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-check text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "LastName" })
+                                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-check text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-lock text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-lock text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.FirmName, new { @class = "form-control", @placeholder = "Firm Name" })
+                                @Html.ValidationMessageFor(m => m.FirmName, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Phone Number" })
+                                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Address.Address1, new { @class = "form-control", @placeholder = "Address line 1" })
+                                @Html.ValidationMessageFor(m => m.Address.Address1, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Address.Address2, new { @class = "form-control", @placeholder = "Address line 2" })
+                                @Html.ValidationMessageFor(m => m.Address.Address2, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Address.Address3, new { @class = "form-control", @placeholder = "Address line 3" })
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Address.County, new { @class = "form-control", @placeholder = "County" })
+                                @Html.ValidationMessageFor(m => m.Address.County, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Address.Postcode, new { @class = "form-control", @placeholder = "Postcode" })
+                                @Html.ValidationMessageFor(m => m.Address.Postcode, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-mention text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                               @Html.CheckBoxFor(o => o.IsTermConfirmed, new { @class = "styled" })
+                                Accept <a href="@Url.Action("Terms","Home")">terms of service</a>
+                            </label>
+                        </div>
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="text-right">
+                        <a href="@Url.Action("Login","Account")" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</a>
+                        <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

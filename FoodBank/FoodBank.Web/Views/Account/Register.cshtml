@@ -1,0 +1,119 @@
+﻿@model FoodBank.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="panel registration-form">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <div class="icon-object border-slate-300 text-slate-300">
+                                <img src="~/assets/icons/android-icon-72x72.png" />
+                            </div>
+                            <h5 class="content-group-lg">Create account <small class="display-block">All fields are required</small></h5>
+                           
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @type = "email", @placeholder = "Company Name" })
+                                @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "EmailAddress" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "FirstName" })
+                                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                                    <div class="form-control-feedback">
+                                        <i class="icon-user-check text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "LastName" })
+                                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                                    <div class="form-control-feedback">
+                                        <i class="icon-user-check text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    <div class="form-control-feedback">
+                                        <i class="icon-user-lock text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                    <div class="form-control-feedback">
+                                        <i class="icon-user-lock text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                   @Html.CheckBoxFor(o => o.IsTermsConfirmed, new { @class = "styled" })
+
+                                    Accept <a href="@Url.Action("Terms", "Home")">terms of service</a>
+                                    @Html.ValidationMessageFor(m => m.IsTermsConfirmed, "", new { @class = "text-danger" })
+                                </label>
+                            </div>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="text-right">
+                            <a href="@Url.Action("Login", "Account")" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</a>
+                            <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
+                        </div>
+                        <div class="text-center">
+                            <h6>Are you a Accounant? <a href="@Url.Action("RegisterAccountant")"> click here</a></h6>
+                            <h6>Are you a Affiliate? <a href="@Url.Action("RegisterAffiliate")"> click here</a></h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+}
+
+@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

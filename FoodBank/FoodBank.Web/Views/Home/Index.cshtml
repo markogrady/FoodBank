@@ -1,0 +1,389 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Law Toolbox - Great tools for the legal industry</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="/assets/homepage/css/flexslider.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/homepage/css/line-icons.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/homepage/css/elegant-icons.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/homepage/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/homepage/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/homepage/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/homepage/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+    <!--[if gte IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/ie9.css" />
+    <![endif]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700%7CRaleway:700' rel='stylesheet' type='text/css'>
+    <script src="/assets/homepage/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <nav class="top-bar overlay-bar">
+            <div class="container">
+
+                <div class="row utility-menu">
+                    <div class="col-sm-12">
+                        <div class="utility-inner clearfix">
+
+                            <span class="alt-font"><i class="icon icon_mail"></i> hello@lawtoolbox.com</span>
+
+                            <div class="pull-right">
+                                <a href="@Url.Action("Login","Account")" class="btn btn-primary btn-white btn-xs">Login</a>
+                                <a href="@Url.Action("Register","Account")" class="btn btn-primary btn-filled btn-xs">Signup</a>
+                               
+                                
+                        
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row nav-menu">
+                    <div class="col-md-2 col-sm-3 columns">
+                        <img class="logo logo-light" alt="Logo" src="/assets/homepage/img/logo-light.png">
+                        <img class="logo logo-dark" alt="Logo" src="/assets/homepage/img/logo-dark.png">
+                    </div>
+
+                    <div class="col-md-10 col-sm-9 columns">
+                        <ul class="menu"></ul>
+
+                        <ul class="social-icons text-right">
+                            <li>
+                                <a href="#">
+                                    <i class="icon social_twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon social_linkedin"></i>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mobile-toggle">
+                    <i class="icon icon_menu"></i>
+                </div>
+
+            </div>
+        </nav>
+
+
+
+
+
+    </div>
+
+    <div class="main-container">
+        <section class="product-right">
+
+            <div class="background-image-holder">
+                <img class="background-image" alt="Background Image" src="/assets/homepage/img/blue-bg.jpg">
+            </div>
+
+            <div class="container align-vertical">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6">
+                        <h1 class="text-white">REMOVING THE PAIN POINTS IN THE LEGAL INDUSTRY</h1>
+                        <p class="lead text-white">
+                            Speed up the instruction taking process
+                        </p>
+                        <a href="@Url.Action("Login","Account")" class="btn btn-primary btn-white">Login</a>
+                        <a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-filled">Signup</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-image" data-scroll-reveal="enter right and move 100px">
+                <img alt="Product Image" src="/assets/homepage/img/ipad.png">
+            </div>
+
+        </section>
+
+        <section class="skill-bars">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+                        <h1>The Problem</h1>
+                        <p class="lead">
+                           Everyone in the legal industry is extremely busy we are producing differnt tools to speed up many of the processes
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="skills-left skills">
+                            <h3>THE 5 AREA OF IMPROVEMENT FOR INSTRUCTION TAKING</h3>
+                            <ul class="skills-ul">
+                                <li>
+                                    <span>1. Finding Documents</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-11"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <span> 2. Validation</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-9"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <span>3. Customer Acceptance</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-7"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <span>4. Inputting data in to case management system</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-6"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>5. Getting the sack</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-6"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="skills-right skills">
+                            <h3>THE 5 MOST STRESSFUL ASPECTS OF SELLING A PROPERTY</h3>
+
+                         
+                            
+                            
+                           
+                            
+                            <ul class="skills-ul">
+                                <li>
+                                    <span>1. Slow solicitors</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-11"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <span>2. The risk of it falling through</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-9"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <span>3. The huge sums of money at stake</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-7"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <span> 4. All the documentation to complete</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-6"></div>
+                                    </div>
+                                </li> 
+                                <li>
+                                    <span> 5. Endless phone calls</span>
+                                    <div class="skill-bar-holder">
+                                        <div class="skill-capacity col-xs-6"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="stat-counters duplicatable-content">
+
+            <div class="background-image-holder parallax-background">
+                <img class="background-image" alt="Background Image" src="/assets/homepage/img/blur2.jpg">
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+                        <h1>More Facts</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat feature">
+                            <div class="stat-bubble">
+                                <span>1 in 7</span>
+                            </div>
+                            <h3>Pulled out due to rising frustrations</h3>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat feature">
+                            <div class="stat-bubble">
+                                <span>50%</span>
+                            </div>
+                            <h3>Half the people had a negative experience</h3>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat feature">
+                            <div class="stat-bubble">
+                                <span>50%</span>
+                            </div>
+                            <h3>Were convinced there transaction would have been smoother with more efficient communication</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat feature">
+                            <div class="stat-bubble">
+                                <span>45%</span>
+                            </div>
+                            <h3>Were convinced the solicitors were dragging their heels</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+      
+
+        <section class="contact-thirds">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1>
+                            Contact Us<br>
+                            We'd love to hear from you
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h5>Enquiries</h5>
+                        <p>
+                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.
+                        </p>
+
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4 text-center">
+                        <h5>Details</h5>
+                        <p class="lead">
+                            +44 7879 775 840<br>
+                            hello@trackthechain.com<br>
+                            <br>
+                            Bury St Edmunds<br>
+                            
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h5>Leave A Message</h5>
+                        <div class="form-wrapper clearfix">
+                            <form class="form-contact email-form">
+                                <div class="inputs-wrapper">
+                                    <input class="form-name validate-required" type="text" placeholder="Your Name" name="name">
+                                    <input class="form-email validate-required validate-email" type="text" placeholder="Your Email Address" name="email">
+                                    <textarea class="form-message validate-required" name="message" placeholder="Your Message"></textarea>
+                                </div>
+                                <input type="submit" class="send-form" value="Send Form">
+                                <div class="form-success">
+                                    <span class="text-white">Message sent - Thanks for your enquiry</span>
+                                </div>
+                                <div class="form-error">
+                                    <span class="text-white">Please complete all fields correctly</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer-container">
+
+
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="/assets/homepage/js/jquery.min.js"></script>
+    <script src="/assets/homepage/js/jquery.plugin.min.js"></script>
+    <script src="/assets/homepage/js/bootstrap.min.js"></script>
+    <script src="/assets/homepage/js/jquery.flexslider-min.js"></script>
+    <script src="/assets/homepage/js/smooth-scroll.min.js"></script>
+    <script src="/assets/homepage/js/skrollr.min.js"></script>
+    <script src="/assets/homepage/js/spectragram.min.js"></script>
+    <script src="/assets/homepage/js/scrollReveal.min.js"></script>
+    <script src="/assets/homepage/js/isotope.min.js"></script>
+    <script src="/assets/homepage/js/twitterFetcher_v10_min.js"></script>
+    <script src="/assets/homepage/js/lightbox.min.js"></script>
+    <script src="/assets/homepage/js/jquery.countdown.min.js"></script>
+    <script src="/assets/homepage/js/scripts.js"></script>
+</body>
+</html>

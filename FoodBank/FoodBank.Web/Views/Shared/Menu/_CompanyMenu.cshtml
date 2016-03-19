@@ -1,0 +1,23 @@
+﻿
+<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+<li class="@(ViewBag.MenuItem == "Dashboard" ? "active" : "")"><a href="@Url.Action("Index","Dashboard", new {area="Conveyancer"})"><i class="icon-grid"></i> <span>Dashboard</span></a></li>
+<li class="@(ViewBag.MenuItem == "Messages" ? "active" : "")"><a href="@Url.Action("GetChannels", "DirectMessage", new {area=""})"><i class="icon-mailbox"></i> <span>Mailbox</span></a></li>
+<li class="@(ViewBag.MenuItem == "Summary" ? "active" : "")"><a href="@Url.Action("Index","Exchange", new {area="Conveyancer"})"><i class="icon-home7"></i> <span>Exchanges</span></a></li>
+<li class="@(ViewBag.MenuItem == "HmrcSubmission" ? "active" : "")"><a href="@Url.Action("Index","HmrcSubmission", new {area="Conveyancer"})"><i class="icon-crown"></i> <span>HMRC Submissions</span></a></li>
+<li class="@(ViewBag.MenuItem == "DocumentTemplates" ? "active" : "")"><a href="@Url.Action("Index","DocumentTemplate", new {area=""})"><i class="icon-files-empty2"></i> <span>Document Templates</span></a></li>
+<li class="@(ViewBag.MenuItem == "EmailTemplates" ? "active" : "")"><a href="@Url.Action("Index","EmailTemplates", new {area=""})"><i class="icon-envelope"></i> <span>Email Templates</span></a></li>
+<li class="@(ViewBag.MenuItem == "Feedback" ? "active" : "")"><a href="@Url.Action("Index","Feedback", new {area=""})"><i class="icon-bubbles6"></i> <span>Feedback</span></a></li>
+<li class="@(ViewBag.MenuItem == "Vacancies" ? "active" : "")"><a href="#"><i class="icon-reading"></i> <span>Vacancies</span></a></li>
+<li>
+    <a href="#"><i class="icon-gear"></i> <span>Settings</span></a>
+    <ul>
+        <li class="@(ViewBag.MenuItem == "GeneralSettings" ? "active" : "")"><a href="@Url.Action("Index", "Setting", new {area = ""})">General</a></li>
+        <li class="@(ViewBag.MenuItem == "NotificationSettings" ? "active" : "")"><a href="@Url.Action("Notifications", "Setting", new {area = ""})">Notifications</a></li>
+        <li class="@(ViewBag.MenuItem == "ConveyancerSettings" ? "active" : "")"><a href="@Url.Action("Edit", "Conveyancer", new {area = "Conveyancer"})">Conveyancer</a></li>
+        @*<li class="@(ViewBag.MenuItem == "Payment" ? "active" : "")"><a href="@Url.Action("Index", "Payments", new {area = "Conveyancer"})">Payments</a></li>*@
+        <li class="@(ViewBag.MenuItem == "UserSettings" ? "active" : "")"><a href="@Url.Action("Index", "Manage", new {area = ""})">User Details</a></li>
+
+
+    </ul>
+</li>
+<li><a onclick="$('#logoutForm1').submit();"><i class="icon-switch2"></i> <span>Logout</span></a></li>

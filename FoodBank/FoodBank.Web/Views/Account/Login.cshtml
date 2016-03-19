@@ -1,0 +1,60 @@
+﻿@using FoodBank.Web.Models
+@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    ViewBag.Title = "Log in";
+}
+
+
+
+
+  <!-- Simple login form -->
+@using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new { role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-body login-form">
+        <div class="text-center">
+            <div class="icon-object border-slate-300 text-slate-300"><img src="~/assets/icons/android-icon-72x72.png"/>
+            </div>
+            <h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
+        </div>
+       
+        <div class="form-group has-feedback has-feedback-left">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control",@placeholder="EmailAddress" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            <div class="form-control-feedback">
+                <i class="icon-user text-muted"></i>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback has-feedback-left">
+
+            @Html.PasswordFor(m => m.Password, new {@class = "form-control", @placeholder = "Password"})
+            @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+
+            <div class="form-control-feedback">
+                <i class="icon-lock2 text-muted"></i>
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-bordered" })
+        @Html.CheckBoxFor(m => m.RememberMe)
+        @Html.LabelFor(m => m.RememberMe)
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>
+        </div>
+
+        <div class="text-center">
+            @Html.ActionLink("Register as a new user", "Register")
+
+        </div>
+<div class="text-center">
+    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+
+        </div>
+
+
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

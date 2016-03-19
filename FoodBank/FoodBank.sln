@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodBank.Core", "FoodBank.Core\FoodBank.Core.csproj", "{7FB77CD6-666E-49B9-84F4-D563E3B7E7A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodBank.Web", "FoodBank.Web\FoodBank.Web.csproj", "{238D6536-5BC3-499B-82F8-4F8B147173E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodBank.Test", "FoodBank.Test\FoodBank.Test.csproj", "{F62013F5-61CC-4812-80D4-01FC29A14A5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FB77CD6-666E-49B9-84F4-D563E3B7E7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB77CD6-666E-49B9-84F4-D563E3B7E7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB77CD6-666E-49B9-84F4-D563E3B7E7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB77CD6-666E-49B9-84F4-D563E3B7E7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238D6536-5BC3-499B-82F8-4F8B147173E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238D6536-5BC3-499B-82F8-4F8B147173E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238D6536-5BC3-499B-82F8-4F8B147173E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238D6536-5BC3-499B-82F8-4F8B147173E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62013F5-61CC-4812-80D4-01FC29A14A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62013F5-61CC-4812-80D4-01FC29A14A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62013F5-61CC-4812-80D4-01FC29A14A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62013F5-61CC-4812-80D4-01FC29A14A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
