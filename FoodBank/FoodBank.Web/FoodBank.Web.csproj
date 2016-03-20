@@ -226,6 +226,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\FoodBank\FoodBankAreaRegistration.cs" />
+    <Compile Include="Areas\Supplier\Controllers\ListingsController.cs" />
     <Compile Include="Areas\Supplier\SupplierAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseLegalController.cs" />
@@ -2986,6 +2987,8 @@
     <Content Include="Areas\Supplier\Views\web.config" />
     <Content Include="Areas\Supplier\Views\_ViewStart.cshtml" />
     <Content Include="Areas\FoodBank\Views\_ViewStart.cshtml" />
+    <None Include="Areas\Supplier\Views\Listings\Create.cshtml" />
+    <None Include="Areas\Supplier\Views\Listings\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3053,7 +3056,6 @@
     <Folder Include="Areas\FoodBank\Controllers\" />
     <Folder Include="Areas\FoodBank\Models\" />
     <Folder Include="Areas\FoodBank\Views\Shared\" />
-    <Folder Include="Areas\Supplier\Controllers\" />
     <Folder Include="Areas\Supplier\Models\" />
     <Folder Include="Areas\Supplier\Views\Shared\" />
   </ItemGroup>

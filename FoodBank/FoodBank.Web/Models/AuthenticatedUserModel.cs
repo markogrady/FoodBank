@@ -16,9 +16,16 @@ namespace FoodBank.Web.Models
         public AppUser AppUser { get; set; }
 
         public AuthBankModel AuthBankModel { get; set; }
-        
+        public AuthSupplierModel AuthSupplierModel { get; set; }
+    }
 
+    public class AuthSupplierModel
+    {
+        public Guid SupplierId { get; set; }
+        public Guid SupplierBranchId { get; set; }
+        public string BranchName { get; set; }
 
+        public string SupplierName { get; set; }
     }
 
     public class AuthBankModel

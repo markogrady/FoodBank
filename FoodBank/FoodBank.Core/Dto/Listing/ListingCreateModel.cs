@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace FoodBank.Core.Dto.Listing
 {
@@ -14,5 +15,6 @@ namespace FoodBank.Core.Dto.Listing
         public decimal Quantity { get; set; }
         public DateTime? UseByDate { get; set; }
         public Guid SupplierBranchId  { get; set; }
+        public List<SelectListItem> SupplierBranches { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Configuration;
+using Aspose.Words.Drawing;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Enum;
 using FoodBank.Core.Dto.Listing;
@@ -18,6 +19,8 @@ namespace FoodBank.Core.Business.Listing
         Task<ListingIndexModel> GetListings();
         Task<ListingEditModel> GetListing(Guid id);
 
+        Task<ListingIndexModel> GetListingsBySupplier(Guid id);
+        Task<ListingIndexModel> GetListingsBySupplierBranch(Guid id);
     }
 
     public class ListingBusiness : IListingBusiness
@@ -95,10 +98,24 @@ namespace FoodBank.Core.Business.Listing
 
         public async Task<ListingIndexModel> GetListings()
         {
+            return await GetListings(null,null ,"", null, ListingStatus.NotSet);
+        }
+
+        private async Task<ListingIndexModel> GetListings(Guid? supplierId,Guid? supplierBranchId ,string postcode,int? distance, ListingStatus listingStatus)
+        {
             var model = new ListingIndexModel();
 
-            var listings = await _appDbContext.Listings.ToListAsync();
-            foreach (var listing in listings)
+            IQueryable<Data.Model.Listing> listings = _appDbContext.Listings;
+
+            if (supplierId != null)
+                listings = listings.Where(o => o.SupplierBranch.SupplierId == supplierId.Value);
+            if (supplierId != null)
+                listings = listings.Where(o => o.SupplierBranchId== supplierBranchId.Value);
+            if (listingStatus != ListingStatus.NotSet)
+                listings = listings.Where(o => o.ListingStatus== listingStatus);
+            //todo workout the closest
+
+            foreach (var listing in await listings.ToListAsync())
             {
                 model.ListingIndexItemModels.Add(new ListingIndexItemModel()
                 {
@@ -130,6 +147,16 @@ namespace FoodBank.Core.Business.Listing
                 model.UseByDate = listing.UseByDate;
             }
             return model;
+        }
+
+        public async Task<ListingIndexModel> GetListingsBySupplier(Guid id)
+        {
+            return await GetListings(id, null, "", null, ListingStatus.NotSet);
+        }
+
+        public async Task<ListingIndexModel> GetListingsBySupplierBranch(Guid id)
+        {
+            return await GetListings(null, id, "", null, ListingStatus.NotSet);
         }
     }
 }

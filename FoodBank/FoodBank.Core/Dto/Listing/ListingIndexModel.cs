@@ -23,5 +23,7 @@ namespace FoodBank.Core.Dto.Listing
         public string ListingName { get; set; }
         public decimal TotalQuantity { get; set; }
         public decimal QuantityAvailable { get; set; }
+        public string BranchName { get; set; }
+        public string SupplierReference { get; set; }
     }
 }

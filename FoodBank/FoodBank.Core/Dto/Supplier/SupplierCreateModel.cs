@@ -32,5 +32,6 @@ namespace FoodBank.Core.Dto.Supplier
         public string SupplierBranchContactName { get; set; }
         public string SupplierBranchContactPhoneNumber { get; set; }
         public string SupplierBranchContactEmailAddress { get; set; }
+        public string SupplierBranchName { get; set; }
     }
 }
