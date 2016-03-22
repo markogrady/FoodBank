@@ -134,9 +134,15 @@
     <Compile Include="Business\Bank\IBankBusiness.cs" />
     <Compile Include="Business\DropDown\IDropDownBusiness.cs" />
     <Compile Include="Business\Listing\IListingBusiness.cs" />
+    <Compile Include="Business\Order\IOrderBusiness.cs" />
+    <Compile Include="Data\Enum\OrderStatus.cs" />
+    <Compile Include="Data\Model\Order.cs" />
+    <Compile Include="Dto\Bank\BankEditModel.cs" />
+    <Compile Include="Dto\Bank\BankIndexModel.cs" />
+    <Compile Include="Dto\Order\OrderCreateModel.cs" />
     <Compile Include="Business\Supplier\ISupplierBusiness.cs" />
     <Compile Include="Data\AppDbContext.cs" />
-    <Compile Include="Data\Enum\ClaimStatus.cs" />
+    <Compile Include="Data\Enum\OrderItemStatus.cs" />
     <Compile Include="Data\Enum\County.cs" />
     <Compile Include="Data\Enum\ListingStatus.cs" />
     <Compile Include="Data\Enum\PartyType.cs" />
@@ -147,17 +153,20 @@
     <Compile Include="Data\Model\BankCompany.cs" />
     <Compile Include="Data\Model\BankUser.cs" />
     <Compile Include="Data\Model\Listing.cs" />
-    <Compile Include="Data\Model\ListingClaim.cs" />
+    <Compile Include="Data\Model\OrderItem.cs" />
     <Compile Include="Data\Model\Supplier.cs" />
     <Compile Include="Data\Model\SupplierBranch.cs" />
     <Compile Include="Data\Model\SupplierUser.cs" />
     <Compile Include="Dto\Listing\ListingCreateModel.cs" />
     <Compile Include="Dto\Listing\ListingEditModel.cs" />
     <Compile Include="Dto\Listing\ListingIndexModel.cs" />
+    <Compile Include="Dto\Order\OrderIndexModel.cs" />
     <Compile Include="Dto\Supplier\SupplierBranchCreateModel.cs" />
     <Compile Include="Dto\Supplier\SupplierCreateModel.cs" />
     <Compile Include="Dto\Supplier\SupplierBranchEditModel.cs" />
     <Compile Include="Dto\Supplier\SupplierEditModel.cs" />
+    <Compile Include="Dto\Supplier\SupplierBranchIndexModel.cs" />
+    <Compile Include="Dto\Supplier\SupplierIndexModel.cs" />
     <Compile Include="Helpers\ApplicationUserManager.cs" />
     <Compile Include="Mail\IEmailService.cs" />
     <Compile Include="Mail\MandrillEmail.cs" />
@@ -165,9 +174,9 @@
     <Compile Include="Mail\Model\BaseMailModel.cs" />
     <Compile Include="Mail\Model\ErrorLogMailModel.cs" />
     <Compile Include="Mail\Model\ResetPasswordMailModel.cs" />
-    <Compile Include="Migrations\201603192237521_init.cs" />
-    <Compile Include="Migrations\201603192237521_init.Designer.cs">
-      <DependentUpon>201603192237521_init.cs</DependentUpon>
+    <Compile Include="Migrations\201603211752320_Init.cs" />
+    <Compile Include="Migrations\201603211752320_Init.Designer.cs">
+      <DependentUpon>201603211752320_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,8 +199,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603192237521_init.resx">
-      <DependentUpon>201603192237521_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603211752320_Init.resx">
+      <DependentUpon>201603211752320_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

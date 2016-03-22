@@ -31,7 +31,7 @@ namespace FoodBank.Core.Seed
                 UseByDate = DateTime.UtcNow.AddDays(10)
             };
 
-            listing1.ListingClaims.Add(new ListingClaim() { BankBranchId = SeedProp.SeedSupplier1Branch1, ClaimStatus = ClaimStatus.Requested, CreationDate = DateTime.UtcNow, ListingClaimId = SeedProp.Listing1Claime1, Quantity = 10, Reference = "rewrew" });
+            //listing1.OrderItems.Add(new OrderItem() { OrderItemStatus = OrderItemStatus.Requested, CreationDate = DateTime.UtcNow, OrderItemId = SeedProp.Listing1Claime1, Quantity = 10, BankReference = "rewrew" });
             listings.Add(listing1);
 
 

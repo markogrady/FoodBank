@@ -14,9 +14,10 @@ namespace FoodBank.Core.Data
         IDbSet<BankBranch> BankBranches { get; set; }
         IDbSet<BankCompany> BankCompanies { get; set; }
         IDbSet<Listing> Listings { get; set; }
-        IDbSet<ListingClaim> ListingClaims { get; set; }
+        IDbSet<OrderItem> OrderItems { get; set; }
         IDbSet<Supplier> Suppliers { get; set; }
         IDbSet<SupplierBranch> SupplierBranches { get; set; }
         IDbSet<SupplierUser> SupplierUsers { get; set; }
+        IDbSet<Order> Orders { get; set; }
     }
 }

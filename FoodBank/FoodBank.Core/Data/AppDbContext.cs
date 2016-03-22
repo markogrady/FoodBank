@@ -52,13 +52,14 @@ namespace FoodBank.Core.Data
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             base.OnModelCreating(modelBuilder);
         }
-        public IDbSet<BankUser> BankUsers { get; set; }
+         public IDbSet<BankUser> BankUsers { get; set; }
          public IDbSet<BankBranch> BankBranches { get; set; }
          public IDbSet<BankCompany> BankCompanies { get; set; }
          public IDbSet<Listing> Listings { get; set; }
-         public IDbSet<ListingClaim> ListingClaims { get; set; }
+         public IDbSet<OrderItem> OrderItems { get; set; }
          public IDbSet<Supplier> Suppliers { get; set; }
          public IDbSet<SupplierBranch> SupplierBranches { get; set; }
          public IDbSet<SupplierUser> SupplierUsers { get; set; }
+         public IDbSet<Order> Orders { get; set; }
     }
 }

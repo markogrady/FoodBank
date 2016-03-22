@@ -12,7 +12,7 @@ namespace FoodBank.Core.Data.Model
         public BankBranch()
         {
             BankUsers = new List<BankUser>();
-            ListingClaims = new List<ListingClaim>();
+            OrderItems = new List<OrderItem>();
         }
         public Guid BankBranchId { get; set; }
         public string BankBranchName { get; set; }
@@ -31,7 +31,7 @@ namespace FoodBank.Core.Data.Model
         public Guid BankCompanyId { get; set; }
         public virtual BankCompany BankCompany { get; set; }
 
-        public virtual ICollection<ListingClaim> ListingClaims { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<BankUser> BankUsers { get; set; }
 
     }

@@ -106,17 +106,17 @@ namespace FoodBank.Web.Controllers
         switch (result)
         {
             case SignInStatus.Success:
-                //if (await UserManager.IsInRoleAsync(user.Id, "Admin"))
-                //{
-                //    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-                //}
-                //if (await UserManager.IsInRoleAsync(user.Id, "Lawyer"))
-                //{
-                //    return RedirectToAction("Index", "Dashboard", new { area = "Lawyer" });
-                //}
+                    //if (await UserManager.IsInRoleAsync(user.Id, "Admin"))
+                    //{
+                    //    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                    //}
+                    if (await UserManager.IsInRoleAsync(user.Id, "Supplier"))
+                    {
+                        return RedirectToAction("Index", "Dashboard", new { area = "Supplier" });
+                    }
 
 
-                return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Index", "Dashboard", new {area=""});
             case SignInStatus.LockedOut:
                 return View("Lockout");
             case SignInStatus.RequiresVerification:

@@ -1,6 +1,6 @@
 ﻿namespace FoodBank.Core.Data.Enum
 {
-    public enum ClaimStatus
+    public enum OrderItemStatus
     {
         NotSet = 0,
         Requested = 10,

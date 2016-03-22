@@ -3,7 +3,7 @@ namespace FoodBank.Core.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -127,22 +127,27 @@ namespace FoodBank.Core.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.ListingClaims",
+                "dbo.OrderItems",
                 c => new
                     {
-                        ListingClaimId = c.Guid(nullable: false),
-                        Reference = c.String(),
+                        OrderItemId = c.Guid(nullable: false),
+                        BankReference = c.String(),
+                        SupplierReference = c.String(),
                         Quantity = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CollectionDate = c.DateTime(),
                         CreationDate = c.DateTime(nullable: false),
-                        ClaimStatus = c.Int(nullable: false),
-                        BankBranchId = c.Guid(nullable: false),
+                        OrderItemStatus = c.Int(nullable: false),
+                        OrderId = c.Guid(nullable: false),
                         ListingId = c.Guid(nullable: false),
+                        BankBranch_BankBranchId = c.Guid(),
                     })
-                .PrimaryKey(t => t.ListingClaimId)
-                .ForeignKey("dbo.BankBranches", t => t.BankBranchId)
+                .PrimaryKey(t => t.OrderItemId)
                 .ForeignKey("dbo.Listings", t => t.ListingId)
-                .Index(t => t.BankBranchId)
-                .Index(t => t.ListingId);
+                .ForeignKey("dbo.Orders", t => t.OrderId)
+                .ForeignKey("dbo.BankBranches", t => t.BankBranch_BankBranchId)
+                .Index(t => t.OrderId)
+                .Index(t => t.ListingId)
+                .Index(t => t.BankBranch_BankBranchId);
             
             CreateTable(
                 "dbo.Listings",
@@ -182,6 +187,24 @@ namespace FoodBank.Core.Migrations
                 .PrimaryKey(t => t.SupplierBranchId)
                 .ForeignKey("dbo.Suppliers", t => t.SupplierId)
                 .Index(t => t.SupplierId);
+            
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        OrderId = c.Guid(nullable: false),
+                        SupplierOrderReference = c.String(),
+                        BankOrderReference = c.String(),
+                        BankBranchId = c.Guid(nullable: false),
+                        SupplierBranchId = c.Guid(nullable: false),
+                        OrderStatus = c.Int(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.OrderId)
+                .ForeignKey("dbo.BankBranches", t => t.BankBranchId)
+                .ForeignKey("dbo.SupplierBranches", t => t.SupplierBranchId)
+                .Index(t => t.BankBranchId)
+                .Index(t => t.SupplierBranchId);
             
             CreateTable(
                 "dbo.Suppliers",
@@ -233,13 +256,16 @@ namespace FoodBank.Core.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.OrderItems", "BankBranch_BankBranchId", "dbo.BankBranches");
             DropForeignKey("dbo.SupplierUsers", "SupplierBranchId", "dbo.SupplierBranches");
             DropForeignKey("dbo.SupplierUsers", "SupplierId", "dbo.Suppliers");
             DropForeignKey("dbo.SupplierUsers", "SupplierUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.SupplierBranches", "SupplierId", "dbo.Suppliers");
+            DropForeignKey("dbo.Orders", "SupplierBranchId", "dbo.SupplierBranches");
+            DropForeignKey("dbo.OrderItems", "OrderId", "dbo.Orders");
+            DropForeignKey("dbo.Orders", "BankBranchId", "dbo.BankBranches");
             DropForeignKey("dbo.Listings", "SupplierBranchId", "dbo.SupplierBranches");
-            DropForeignKey("dbo.ListingClaims", "ListingId", "dbo.Listings");
-            DropForeignKey("dbo.ListingClaims", "BankBranchId", "dbo.BankBranches");
+            DropForeignKey("dbo.OrderItems", "ListingId", "dbo.Listings");
             DropForeignKey("dbo.BankUsers", "BankCompanyId", "dbo.BankCompanies");
             DropForeignKey("dbo.BankUsers", "BankBranchId", "dbo.BankBranches");
             DropForeignKey("dbo.BankUsers", "BankUserId", "dbo.AspNetUsers");
@@ -251,10 +277,13 @@ namespace FoodBank.Core.Migrations
             DropIndex("dbo.SupplierUsers", new[] { "SupplierBranchId" });
             DropIndex("dbo.SupplierUsers", new[] { "SupplierId" });
             DropIndex("dbo.SupplierUsers", new[] { "SupplierUserId" });
+            DropIndex("dbo.Orders", new[] { "SupplierBranchId" });
+            DropIndex("dbo.Orders", new[] { "BankBranchId" });
             DropIndex("dbo.SupplierBranches", new[] { "SupplierId" });
             DropIndex("dbo.Listings", new[] { "SupplierBranchId" });
-            DropIndex("dbo.ListingClaims", new[] { "ListingId" });
-            DropIndex("dbo.ListingClaims", new[] { "BankBranchId" });
+            DropIndex("dbo.OrderItems", new[] { "BankBranch_BankBranchId" });
+            DropIndex("dbo.OrderItems", new[] { "ListingId" });
+            DropIndex("dbo.OrderItems", new[] { "OrderId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -267,9 +296,10 @@ namespace FoodBank.Core.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.SupplierUsers");
             DropTable("dbo.Suppliers");
+            DropTable("dbo.Orders");
             DropTable("dbo.SupplierBranches");
             DropTable("dbo.Listings");
-            DropTable("dbo.ListingClaims");
+            DropTable("dbo.OrderItems");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

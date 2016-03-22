@@ -7,17 +7,18 @@ using FoodBank.Core.Data.Enum;
 
 namespace FoodBank.Core.Data.Model
 {
-    public class ListingClaim
+    public class OrderItem
     {
-        public Guid ListingClaimId { get; set; }
-        public string Reference { get; set; }
+        public Guid OrderItemId { get; set; }
+        public string BankReference { get; set; }
+        public string SupplierReference { get; set; }
         public decimal Quantity { get; set; }
-
+        public DateTime? CollectionDate { get; set; }
         public DateTime CreationDate { get; set; }
-        public ClaimStatus ClaimStatus { get; set; }
-
-        public Guid BankBranchId { get; set; }
-        public virtual BankBranch BankBranch { get; set; }
+        public OrderItemStatus OrderItemStatus { get; set; }
+        public Guid OrderId { get; set; }
+        public virtual Order Order { get; set; }
+        
         public Guid ListingId { get; set; }
         public virtual Listing Listing { get; set; }
 

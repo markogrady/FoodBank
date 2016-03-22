@@ -25,7 +25,7 @@ namespace FoodBank.Core.Business.Listing
 
     public class ListingBusiness : IListingBusiness
     {
-        private IAppDbContext _appDbContext;
+        private readonly IAppDbContext _appDbContext;
 
         public ListingBusiness(IAppDbContext appDbContext)
         {
@@ -44,7 +44,6 @@ namespace FoodBank.Core.Business.Listing
             listing.SupplierReference = model.SupplierReference;
             listing.Quantity = model.Quantity;
             listing.UseByDate = model.UseByDate;
-
             listing.ListingStatus = ListingStatus.Open;
             listing.CreationDate = DateTime.UtcNow;
 
@@ -121,7 +120,7 @@ namespace FoodBank.Core.Business.Listing
                 {
                     ListingId = listing.ListingId,
                     TotalQuantity = listing.Quantity,
-                    QuantityAvailable = listing.Quantity - listing.ListingClaims.Sum(o => o.Quantity),
+                    QuantityAvailable = listing.Quantity - listing.OrderItems.Where(o => !(o.OrderItemStatus == OrderItemStatus.Confirmed || o.OrderItemStatus == OrderItemStatus.Completed)).Sum(o => o.Quantity),
                     ListingName = listing.ListingName,
                     SupplierId = listing.SupplierBranch.SupplierId,
                     SupplierName = listing.SupplierBranch.Supplier.SupplierName

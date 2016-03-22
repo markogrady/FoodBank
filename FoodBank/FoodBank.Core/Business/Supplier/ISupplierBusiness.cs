@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using Aspose.Words;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Enum;
@@ -16,8 +17,13 @@ namespace FoodBank.Core.Business.Supplier
         Task Update(SupplierEditModel model);
         Task<Guid> CreateBranch(SupplierBranchCreateModel model);
         Task UpdateBranch(SupplierBranchEditModel model);
+        Task<SupplierIndexModel> GetSuppliers();
+       
+        Task<SupplierEditModel> GetSupplier(Guid id);
 
+        Task<SupplierBranchIndexModel> GetSupplierBranches(Guid id);
 
+        Task<SupplierBranchEditModel> GetSupplierBranch(Guid id);
     }
 
     public class SupplierBusiness : ISupplierBusiness
@@ -125,6 +131,26 @@ namespace FoodBank.Core.Business.Supplier
                 supplierBranch.ContactPhoneNumber = model.ContactPhoneNumber;
                 await _appDbContext.SaveChangesAsync();
             }
+        }
+
+        public Task<SupplierIndexModel> GetSuppliers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<SupplierEditModel> GetSupplier(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<SupplierBranchIndexModel> GetSupplierBranches(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<SupplierBranchEditModel> GetSupplierBranch(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

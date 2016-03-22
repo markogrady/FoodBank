@@ -225,8 +225,13 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\FoodBank\Controllers\DashboardController.cs" />
     <Compile Include="Areas\FoodBank\FoodBankAreaRegistration.cs" />
+    <Compile Include="Areas\Supplier\Controllers\BanksController.cs" />
+    <Compile Include="Areas\Supplier\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Supplier\Controllers\ListingsController.cs" />
+    <Compile Include="Areas\Supplier\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Supplier\Controllers\SupplierController.cs" />
     <Compile Include="Areas\Supplier\SupplierAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseLegalController.cs" />
@@ -2987,8 +2992,13 @@
     <Content Include="Areas\Supplier\Views\web.config" />
     <Content Include="Areas\Supplier\Views\_ViewStart.cshtml" />
     <Content Include="Areas\FoodBank\Views\_ViewStart.cshtml" />
+    <None Include="Areas\Supplier\Views\Banks\Detail.cshtml" />
+    <None Include="Areas\Supplier\Views\Banks\Index.cshtml" />
     <None Include="Areas\Supplier\Views\Listings\Create.cshtml" />
+    <None Include="Areas\Supplier\Views\Listings\Edit.cshtml" />
     <None Include="Areas\Supplier\Views\Listings\Index.cshtml" />
+    <None Include="Areas\Supplier\Views\Orders\Index.cshtml" />
+    <None Include="Areas\Supplier\Views\Supplier\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3053,10 +3063,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\FoodBank\Controllers\" />
     <Folder Include="Areas\FoodBank\Models\" />
+    <Folder Include="Areas\FoodBank\Views\Dashboard\" />
     <Folder Include="Areas\FoodBank\Views\Shared\" />
     <Folder Include="Areas\Supplier\Models\" />
+    <Folder Include="Areas\Supplier\Views\Dashboard\" />
     <Folder Include="Areas\Supplier\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

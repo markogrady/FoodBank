@@ -1,0 +1,56 @@
+﻿@model FoodBank.Core.Dto.Listing.ListingEditModel
+@using FoodBank.Web.Helpers
+@model FoodBank.Core.Dto.Listing.ListingEditModel
+
+@{
+    ViewBag.Title = "Listing Edit";
+    ViewBag.MenuItem = "listing";
+}
+
+
+@section pageJs {
+    <script type="text/javascript" src="/assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="/assets/js/core/app.js"></script>
+    <script type="text/javascript" src="/assets/js/pages/form_inputs.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Page header -->
+@Html.Partial("Page/PageHeader")
+<!-- /page header -->
+<!-- Main content -->
+<!-- Content area -->
+<div class="content">
+    <!-- Form horizontal -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Listing Edit</h5>
+            <div class="heading-elements">
+                <ul class="icons-list"></ul>
+            </div>
+        </div>
+        <div class="panel-body">
+
+
+            @using (Html.BeginForm("Edit", "Listings", new {area = ""}, FormMethod.Post, new {@class = "form-horizontal", enctype = "multipart/form-data"}))
+            {
+                @Html.HiddenFor(o => o.ListingId)
+                <fieldset class="content-group">
+                   
+                    @Html.TtcFullTextBoxFor(o => o.ListingName, "ListingName")
+                    @Html.TtcFullTextAreaFor(o => o.Description, "Description", 5, 5)
+                    @Html.TtcFullTextBoxFor(o => o.Quantity, "Quantity")
+                    @Html.TtcFullTextBoxFor(o => o.UseByDate, "Used By Date")
+                </fieldset>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+
+            }
+        </div>
+    </div>
+    <!-- /form horizontal -->
+
+</div>
+<!-- /content area -->

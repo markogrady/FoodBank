@@ -13,6 +13,7 @@ namespace FoodBank.Core.Data.Model
         {
             Listings = new List<Listing>();
             SupplierUsers = new List<SupplierUser>();
+            Orders = new List<Order>();
         }
 
         public Guid SupplierBranchId { get; set; }
@@ -33,5 +34,6 @@ namespace FoodBank.Core.Data.Model
 
         public virtual ICollection<SupplierUser> SupplierUsers { get; set; }
         public virtual ICollection<Listing> Listings { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
