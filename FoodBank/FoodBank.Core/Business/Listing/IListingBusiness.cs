@@ -19,8 +19,8 @@ namespace FoodBank.Core.Business.Listing
         Task<ListingIndexModel> GetListings();
         Task<ListingEditModel> GetListing(Guid id);
 
-        Task<ListingIndexModel> GetListingsBySupplier(Guid id);
-        Task<ListingIndexModel> GetListingsBySupplierBranch(Guid id);
+        Task<ListingIndexModel> GetListingsByCompany(Guid id);
+        Task<ListingIndexModel> GetListingsByCompanyBranch(Guid id);
     }
 
     public class ListingBusiness : IListingBusiness
@@ -38,10 +38,10 @@ namespace FoodBank.Core.Business.Listing
             var listing = new Data.Model.Listing();
             listing.ListingId = id;
 
-            listing.SupplierBranchId = model.SupplierBranchId;
+            listing.CompanyBranchId = model.CompanyBranchId;
             listing.Description = model.Description;
             listing.ListingName = model.ListingName;
-            listing.SupplierReference = model.SupplierReference;
+            listing.CompanyReference = model.CompanyReference;
             listing.Quantity = model.Quantity;
             listing.UseByDate = model.UseByDate;
             listing.ListingStatus = ListingStatus.Open;
@@ -58,7 +58,7 @@ namespace FoodBank.Core.Business.Listing
             if (listing != null)
             {
                 listing.Description = model.Description;
-                listing.SupplierReference = model.SupplierReference;
+                listing.CompanyReference = model.CompanyReference;
                 listing.UseByDate = model.UseByDate;
                 listing.ListingName = model.Description;
 
@@ -100,16 +100,16 @@ namespace FoodBank.Core.Business.Listing
             return await GetListings(null,null ,"", null, ListingStatus.NotSet);
         }
 
-        private async Task<ListingIndexModel> GetListings(Guid? supplierId,Guid? supplierBranchId ,string postcode,int? distance, ListingStatus listingStatus)
+        private async Task<ListingIndexModel> GetListings(Guid? CompanyId,Guid? CompanyBranchId ,string postcode,int? distance, ListingStatus listingStatus)
         {
             var model = new ListingIndexModel();
 
             IQueryable<Data.Model.Listing> listings = _appDbContext.Listings;
 
-            if (supplierId != null)
-                listings = listings.Where(o => o.SupplierBranch.SupplierId == supplierId.Value);
-            if (supplierId != null)
-                listings = listings.Where(o => o.SupplierBranchId== supplierBranchId.Value);
+            if (CompanyId != null)
+                listings = listings.Where(o => o.CompanyBranch.CompanyId == CompanyId.Value);
+            if (CompanyId != null)
+                listings = listings.Where(o => o.CompanyBranchId== CompanyBranchId.Value);
             if (listingStatus != ListingStatus.NotSet)
                 listings = listings.Where(o => o.ListingStatus== listingStatus);
             //todo workout the closest
@@ -122,8 +122,8 @@ namespace FoodBank.Core.Business.Listing
                     TotalQuantity = listing.Quantity,
                     QuantityAvailable = listing.Quantity - listing.OrderItems.Where(o => !(o.OrderItemStatus == OrderItemStatus.Confirmed || o.OrderItemStatus == OrderItemStatus.Completed)).Sum(o => o.Quantity),
                     ListingName = listing.ListingName,
-                    SupplierId = listing.SupplierBranch.SupplierId,
-                    SupplierName = listing.SupplierBranch.Supplier.SupplierName
+                    CompanyId = listing.CompanyBranch.CompanyId,
+                    CompanyName = listing.CompanyBranch.Company.CompanyName
 
                 });
             }
@@ -142,18 +142,18 @@ namespace FoodBank.Core.Business.Listing
                 model.ListingName = listing.ListingName;
                 model.ListingStatus = listing.ListingStatus;
                 model.Quantity = listing.Quantity;
-                model.SupplierReference = listing.SupplierReference;
+                model.CompanyReference = listing.CompanyReference;
                 model.UseByDate = listing.UseByDate;
             }
             return model;
         }
 
-        public async Task<ListingIndexModel> GetListingsBySupplier(Guid id)
+        public async Task<ListingIndexModel> GetListingsByCompany(Guid id)
         {
             return await GetListings(id, null, "", null, ListingStatus.NotSet);
         }
 
-        public async Task<ListingIndexModel> GetListingsBySupplierBranch(Guid id)
+        public async Task<ListingIndexModel> GetListingsByCompanyBranch(Guid id)
         {
             return await GetListings(null, id, "", null, ListingStatus.NotSet);
         }

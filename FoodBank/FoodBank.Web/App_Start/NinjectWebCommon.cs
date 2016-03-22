@@ -1,7 +1,6 @@
-using FoodBank.Core.Business.Bank;
+using FoodBank.Core.Business.Company;
 using FoodBank.Core.Business.DropDown;
 using FoodBank.Core.Business.Listing;
-using FoodBank.Core.Business.Supplier;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Model;
 using FoodBank.Core.Mail;
@@ -74,8 +73,7 @@ namespace FoodBank.Web.App_Start
             kernel.Bind<IEmailService>().To<MandrillEmail>();
             kernel.Bind<IDropDownBusiness>().To<DropDownBusiness>();
             kernel.Bind<IListingBusiness>().To<ListingBusiness>();
-            kernel.Bind<ISupplierBusiness>().To<SupplierBusiness>();
-            kernel.Bind<IBankBusiness>().To<BankBusiness>();
+            kernel.Bind<ICompanyBusiness>().To<CompanyBusiness>();
             kernel.Bind<IUserStore<AppUser, Guid>>().To<AppUserStore>();
             kernel.Bind<UserManager<AppUser, Guid>>().ToSelf();
         }        

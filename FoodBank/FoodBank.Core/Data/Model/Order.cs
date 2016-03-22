@@ -14,14 +14,14 @@ namespace FoodBank.Core.Data.Model
             OrderItems = new List<OrderItem>();
         }
         public Guid OrderId { get; set; }
-        public string SupplierOrderReference { get; set; }
-        public string BankOrderReference { get; set; }
-        public Guid BankBranchId { get; set; }
-        public virtual BankBranch BankBranch { get; set; }
+        public string CompanyOrderReference { get; set; }
+        public string CustomerOrderReference { get; set; }
+        
 
-        public Guid SupplierBranchId { get; set; }
+        public Guid CompanyBranchId { get; set; }
+        public virtual CompanyBranch CompanyBranch { get; set; }
+
         public OrderStatus OrderStatus { get; set; }
-        public virtual SupplierBranch SupplierBranch { get; set; }
         public DateTime CreationDate { get; set; }
         public virtual ICollection<OrderItem> OrderItems  { get; set; }
     }

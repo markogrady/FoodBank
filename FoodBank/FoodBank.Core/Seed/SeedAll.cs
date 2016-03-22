@@ -20,8 +20,8 @@ namespace FoodBank.Core.Seed
 
             SeedRole.CreateRoles(context);
             SeedUser.CreateUsers(context);
-            SeedSupplier.SeedData(context);
-            SeedBankCompany.SeedData(context);
+            SeedCompany.SeedData(context);
+            
             SeedListing.SeedData(context);
         }
     }

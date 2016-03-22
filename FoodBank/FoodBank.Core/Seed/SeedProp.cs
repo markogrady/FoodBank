@@ -10,23 +10,23 @@ namespace FoodBank.Core.Seed
     {
         public static Guid UserAdmin1 = Guid.Parse("A3F6E537-BA23-4A72-9AE0-E4C20230F734");
 
-        public static Guid UserSupplier1 = Guid.Parse("A24C984F-DC8F-457A-843D-57D25E66B7A2");
+        public static Guid UserCompany1 = Guid.Parse("A24C984F-DC8F-457A-843D-57D25E66B7A2");
         public static Guid UserFoodBank1 = Guid.Parse("EEDDB48D-2623-4DAF-BD80-31C0E35124B2");
-        public static string SupplierEmail1 = "mark.ogrady+supplier1@questionset.com";
+        public static string CompanyEmail1 = "mark.ogrady+Company1@questionset.com";
         public static string FoodBankEmail1 = "mark.ogrady+foodbank1@questionset.com";
-        public static Guid SeedSupplier1 = Guid.Parse("DE60D7C5-227B-47C8-8952-BFF7CCE9DC1C");
-        public static Guid SeedSupplier2 = Guid.Parse("84567765-6151-4D29-9676-A24B9ADC0106");
-        public static Guid SeedSupplier3 = Guid.Parse("C7525D98-D5F5-4D33-AEDC-5A40ED2EB027");
-        public static Guid SeedSupplier4 = Guid.Parse("E7033191-1276-4E9A-805E-1E82CA245A7A");
-        public static Guid SeedSupplier5 = Guid.Parse("02CFB7BE-8DFD-4F30-A27B-742C8626B9A2");
+        public static Guid SeedCompany1 = Guid.Parse("DE60D7C5-227B-47C8-8952-BFF7CCE9DC1C");
+        public static Guid SeedCompany2 = Guid.Parse("84567765-6151-4D29-9676-A24B9ADC0106");
+        public static Guid SeedCompany3 = Guid.Parse("C7525D98-D5F5-4D33-AEDC-5A40ED2EB027");
+        public static Guid SeedCompany4 = Guid.Parse("E7033191-1276-4E9A-805E-1E82CA245A7A");
+        public static Guid SeedCompany5 = Guid.Parse("02CFB7BE-8DFD-4F30-A27B-742C8626B9A2");
 
-        public static Guid SeedSupplier1Branch1 = Guid.Parse("423B4830-CB5E-4994-B1D0-4906BBBC0CD8");
-        public static Guid SeedSupplier1Branch2 = Guid.Parse("E184249B-B0B1-4B2E-9691-47F68C2495E3");
-        public static Guid SeedSupplier1Branch3 = Guid.Parse("CB9D006C-459B-4BAA-9CEC-2C6D52C3DDE7");
-        public static Guid SeedSupplier1Branch4 = Guid.Parse("6842E0C1-07F5-44F6-9D39-D7CAD294E77E");
-        public static Guid SeedSupplier1Branch5 = Guid.Parse("A2F71F5B-05E4-44B0-83EE-E3C32CBD0FCD");
-        public static Guid SeedSupplier1Branch6 = Guid.Parse("27F1AF69-5258-4A26-9D48-63D7AA9D64E9");
-        public static Guid SeedSupplier1Branch7 = Guid.Parse("3548C705-F084-4BD3-9C2A-83DAD2ECFB03");
+        public static Guid SeedCompany1Branch1 = Guid.Parse("423B4830-CB5E-4994-B1D0-4906BBBC0CD8");
+        public static Guid SeedCompany1Branch2 = Guid.Parse("E184249B-B0B1-4B2E-9691-47F68C2495E3");
+        public static Guid SeedCompany1Branch3 = Guid.Parse("CB9D006C-459B-4BAA-9CEC-2C6D52C3DDE7");
+        public static Guid SeedCompany1Branch4 = Guid.Parse("6842E0C1-07F5-44F6-9D39-D7CAD294E77E");
+        public static Guid SeedCompany1Branch5 = Guid.Parse("A2F71F5B-05E4-44B0-83EE-E3C32CBD0FCD");
+        public static Guid SeedCompany1Branch6 = Guid.Parse("27F1AF69-5258-4A26-9D48-63D7AA9D64E9");
+        public static Guid SeedCompany1Branch7 = Guid.Parse("3548C705-F084-4BD3-9C2A-83DAD2ECFB03");
 
         public static Guid SeedBank1 = Guid.Parse("62207E0A-9B35-4955-ACE3-DC698987110E");
         public static Guid SeedBank2 = Guid.Parse("A35C85F3-52E6-4BFC-9CC2-DE655EDC1FD9");

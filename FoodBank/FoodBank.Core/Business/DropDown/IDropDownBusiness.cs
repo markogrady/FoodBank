@@ -8,7 +8,7 @@ namespace FoodBank.Core.Business.DropDown
 {
     public interface IDropDownBusiness
     {
-        List<SelectListItem> GetBranches(Guid supplierId);
+        List<SelectListItem> GetBranches(Guid CompanyId);
     }
 
     public class DropDownBusiness : IDropDownBusiness
@@ -20,15 +20,15 @@ namespace FoodBank.Core.Business.DropDown
             _appDbContext = appDbContext;
         }
 
-        public List<SelectListItem> GetBranches(Guid supplierId)
+        public List<SelectListItem> GetBranches(Guid CompanyId)
         {
             var model = new List<SelectListItem>();
-            var branches = _appDbContext.SupplierBranches.Select(o => new
+            var branches = _appDbContext.CompanyBranches.Select(o => new
             {
-                o.SupplierId,
-                Text = o.SupplierBranchName,
-                Value = o.SupplierBranchId
-            }).Where(o => o.SupplierId == supplierId);
+                o.CompanyId,
+                Text = o.CompanyBranchName,
+                Value = o.CompanyBranchId
+            }).Where(o => o.CompanyId == CompanyId);
 
             foreach (var branch in branches.ToList())
             {

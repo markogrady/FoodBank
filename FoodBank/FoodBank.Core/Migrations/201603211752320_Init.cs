@@ -132,7 +132,7 @@ namespace FoodBank.Core.Migrations
                     {
                         OrderItemId = c.Guid(nullable: false),
                         BankReference = c.String(),
-                        SupplierReference = c.String(),
+                        CompanyReference = c.String(),
                         Quantity = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CollectionDate = c.DateTime(),
                         CreationDate = c.DateTime(nullable: false),
@@ -154,25 +154,25 @@ namespace FoodBank.Core.Migrations
                 c => new
                     {
                         ListingId = c.Guid(nullable: false),
-                        SupplierReference = c.String(),
+                        CompanyReference = c.String(),
                         ListingName = c.String(),
                         Description = c.String(),
                         Quantity = c.Decimal(nullable: false, precision: 18, scale: 2),
                         UseByDate = c.DateTime(),
                         ListingStatus = c.Int(nullable: false),
                         CreationDate = c.DateTime(nullable: false),
-                        SupplierBranchId = c.Guid(nullable: false),
+                        CompanyBranchId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.ListingId)
-                .ForeignKey("dbo.SupplierBranches", t => t.SupplierBranchId)
-                .Index(t => t.SupplierBranchId);
+                .ForeignKey("dbo.CompanyBranches", t => t.CompanyBranchId)
+                .Index(t => t.CompanyBranchId);
             
             CreateTable(
-                "dbo.SupplierBranches",
+                "dbo.CompanyBranches",
                 c => new
                     {
-                        SupplierBranchId = c.Guid(nullable: false),
-                        SupplierBranchName = c.String(),
+                        CompanyBranchId = c.Guid(nullable: false),
+                        CompanyBranchName = c.String(),
                         Address1 = c.String(),
                         Address2 = c.String(),
                         Address3 = c.String(),
@@ -182,36 +182,36 @@ namespace FoodBank.Core.Migrations
                         ContactName = c.String(),
                         ContactPhoneNumber = c.String(),
                         ContactEmailAddress = c.String(),
-                        SupplierId = c.Guid(nullable: false),
+                        CompanyId = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => t.SupplierBranchId)
-                .ForeignKey("dbo.Suppliers", t => t.SupplierId)
-                .Index(t => t.SupplierId);
+                .PrimaryKey(t => t.CompanyBranchId)
+                .ForeignKey("dbo.Companys", t => t.CompanyId)
+                .Index(t => t.CompanyId);
             
             CreateTable(
                 "dbo.Orders",
                 c => new
                     {
                         OrderId = c.Guid(nullable: false),
-                        SupplierOrderReference = c.String(),
+                        CompanyOrderReference = c.String(),
                         BankOrderReference = c.String(),
                         BankBranchId = c.Guid(nullable: false),
-                        SupplierBranchId = c.Guid(nullable: false),
+                        CompanyBranchId = c.Guid(nullable: false),
                         OrderStatus = c.Int(nullable: false),
                         CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.OrderId)
                 .ForeignKey("dbo.BankBranches", t => t.BankBranchId)
-                .ForeignKey("dbo.SupplierBranches", t => t.SupplierBranchId)
+                .ForeignKey("dbo.CompanyBranches", t => t.CompanyBranchId)
                 .Index(t => t.BankBranchId)
-                .Index(t => t.SupplierBranchId);
+                .Index(t => t.CompanyBranchId);
             
             CreateTable(
-                "dbo.Suppliers",
+                "dbo.Companys",
                 c => new
                     {
-                        SupplierId = c.Guid(nullable: false),
-                        SupplierName = c.String(),
+                        CompanyId = c.Guid(nullable: false),
+                        CompanyName = c.String(),
                         LogoUrl = c.String(),
                         Address1 = c.String(),
                         Address2 = c.String(),
@@ -223,23 +223,23 @@ namespace FoodBank.Core.Migrations
                         ContactPhoneNumber = c.String(),
                         ContactEmailAddress = c.String(),
                     })
-                .PrimaryKey(t => t.SupplierId);
+                .PrimaryKey(t => t.CompanyId);
             
             CreateTable(
-                "dbo.SupplierUsers",
+                "dbo.CompanyUsers",
                 c => new
                     {
-                        SupplierUserId = c.Guid(nullable: false),
-                        SupplierId = c.Guid(nullable: false),
-                        SupplierBranchId = c.Guid(nullable: false),
+                        CompanyUserId = c.Guid(nullable: false),
+                        CompanyId = c.Guid(nullable: false),
+                        CompanyBranchId = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => t.SupplierUserId)
-                .ForeignKey("dbo.AspNetUsers", t => t.SupplierUserId)
-                .ForeignKey("dbo.Suppliers", t => t.SupplierId)
-                .ForeignKey("dbo.SupplierBranches", t => t.SupplierBranchId)
-                .Index(t => t.SupplierUserId)
-                .Index(t => t.SupplierId)
-                .Index(t => t.SupplierBranchId);
+                .PrimaryKey(t => t.CompanyUserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.CompanyUserId)
+                .ForeignKey("dbo.Companys", t => t.CompanyId)
+                .ForeignKey("dbo.CompanyBranches", t => t.CompanyBranchId)
+                .Index(t => t.CompanyUserId)
+                .Index(t => t.CompanyId)
+                .Index(t => t.CompanyBranchId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -257,14 +257,14 @@ namespace FoodBank.Core.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.OrderItems", "BankBranch_BankBranchId", "dbo.BankBranches");
-            DropForeignKey("dbo.SupplierUsers", "SupplierBranchId", "dbo.SupplierBranches");
-            DropForeignKey("dbo.SupplierUsers", "SupplierId", "dbo.Suppliers");
-            DropForeignKey("dbo.SupplierUsers", "SupplierUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.SupplierBranches", "SupplierId", "dbo.Suppliers");
-            DropForeignKey("dbo.Orders", "SupplierBranchId", "dbo.SupplierBranches");
+            DropForeignKey("dbo.CompanyUsers", "CompanyBranchId", "dbo.CompanyBranches");
+            DropForeignKey("dbo.CompanyUsers", "CompanyId", "dbo.Companys");
+            DropForeignKey("dbo.CompanyUsers", "CompanyUserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CompanyBranches", "CompanyId", "dbo.Companys");
+            DropForeignKey("dbo.Orders", "CompanyBranchId", "dbo.CompanyBranches");
             DropForeignKey("dbo.OrderItems", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "BankBranchId", "dbo.BankBranches");
-            DropForeignKey("dbo.Listings", "SupplierBranchId", "dbo.SupplierBranches");
+            DropForeignKey("dbo.Listings", "CompanyBranchId", "dbo.CompanyBranches");
             DropForeignKey("dbo.OrderItems", "ListingId", "dbo.Listings");
             DropForeignKey("dbo.BankUsers", "BankCompanyId", "dbo.BankCompanies");
             DropForeignKey("dbo.BankUsers", "BankBranchId", "dbo.BankBranches");
@@ -274,13 +274,13 @@ namespace FoodBank.Core.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.BankBranches", "BankCompanyId", "dbo.BankCompanies");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.SupplierUsers", new[] { "SupplierBranchId" });
-            DropIndex("dbo.SupplierUsers", new[] { "SupplierId" });
-            DropIndex("dbo.SupplierUsers", new[] { "SupplierUserId" });
-            DropIndex("dbo.Orders", new[] { "SupplierBranchId" });
+            DropIndex("dbo.CompanyUsers", new[] { "CompanyBranchId" });
+            DropIndex("dbo.CompanyUsers", new[] { "CompanyId" });
+            DropIndex("dbo.CompanyUsers", new[] { "CompanyUserId" });
+            DropIndex("dbo.Orders", new[] { "CompanyBranchId" });
             DropIndex("dbo.Orders", new[] { "BankBranchId" });
-            DropIndex("dbo.SupplierBranches", new[] { "SupplierId" });
-            DropIndex("dbo.Listings", new[] { "SupplierBranchId" });
+            DropIndex("dbo.CompanyBranches", new[] { "CompanyId" });
+            DropIndex("dbo.Listings", new[] { "CompanyBranchId" });
             DropIndex("dbo.OrderItems", new[] { "BankBranch_BankBranchId" });
             DropIndex("dbo.OrderItems", new[] { "ListingId" });
             DropIndex("dbo.OrderItems", new[] { "OrderId" });
@@ -294,10 +294,10 @@ namespace FoodBank.Core.Migrations
             DropIndex("dbo.BankUsers", new[] { "BankUserId" });
             DropIndex("dbo.BankBranches", new[] { "BankCompanyId" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.SupplierUsers");
-            DropTable("dbo.Suppliers");
+            DropTable("dbo.CompanyUsers");
+            DropTable("dbo.Companys");
             DropTable("dbo.Orders");
-            DropTable("dbo.SupplierBranches");
+            DropTable("dbo.CompanyBranches");
             DropTable("dbo.Listings");
             DropTable("dbo.OrderItems");
             DropTable("dbo.AspNetUserRoles");

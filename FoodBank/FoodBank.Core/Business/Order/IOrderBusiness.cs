@@ -13,10 +13,10 @@ namespace FoodBank.Core.Business.Order
     public interface IOrderBusiness
     {
         Task<Guid> Create(OrderCreateModel model);
-        Task SetSupplierReference(Guid orderItemId, string supplierReference);
+        Task SetCompanyReference(Guid orderItemId, string CompanyReference);
         Task UpdateStatus(Guid id, OrderItemStatus orderItemStatus);
-        Task<OrderIndexModel> GetSupplierOrders(Guid id);
-        Task<OrderIndexModel> GetSupplierBranchOrders(Guid id);
+        Task<OrderIndexModel> GetCompanyOrders(Guid id);
+        Task<OrderIndexModel> GetCompanyBranchOrders(Guid id);
     }
 
     public class OrderBusiness : IOrderBusiness
@@ -30,7 +30,7 @@ namespace FoodBank.Core.Business.Order
 
         public async Task<Guid> Create(OrderCreateModel model)
         {
-            //todo Get all listings and group by supplier Branch then place a order for each supplierBranch
+            //todo Get all listings and group by Company Branch then place a order for each CompanyBranch
 
             //Is there available amount
             //Is Past its useby date
@@ -39,7 +39,7 @@ namespace FoodBank.Core.Business.Order
 
             var order = new Data.Model.Order();
             order.OrderId = id;
-            order.BankOrderReference = model.BankOrderReference;
+            order.CompanyOrderReference = model.BankOrderReference;
             order.OrderStatus = OrderStatus.Open;
             
             foreach (var item in model.OrderItems)
@@ -60,12 +60,12 @@ namespace FoodBank.Core.Business.Order
 
       
 
-        public async Task SetSupplierReference(Guid orderItemId, string supplierReference)
+        public async Task SetCompanyReference(Guid orderItemId, string CompanyReference)
         {
             var orderItem = await _appDbContext.OrderItems.FirstOrDefaultAsync(o => o.OrderItemId == orderItemId);
             if (orderItem != null)
             {
-                orderItem.SupplierReference = supplierReference;
+                orderItem.CompanyReference = CompanyReference;
                 await _appDbContext.SaveChangesAsync();
             }
         }
@@ -83,28 +83,24 @@ namespace FoodBank.Core.Business.Order
             }
         }
 
-        public async Task<OrderIndexModel> GetSupplierOrders(Guid id)
+        public async Task<OrderIndexModel> GetCompanyOrders(Guid id)
         {
 
             //todo anonymous type it
             var model = new OrderIndexModel();
 
-            var orders = _appDbContext.Orders.Where(o => o.SupplierBranch.SupplierId == id);
+            var orders = _appDbContext.Orders.Where(o => o.CompanyBranch.CompanyId == id);
             foreach (var order in orders)
             {
                 model.OrderIndexItemModels.Add(new OrderIndexItemModel()
                 {
-                    SupplierId = order.SupplierBranch.SupplierId,
-                    SupplierBranchName = order.SupplierBranch.SupplierBranchName,
-                    BankBranchId = order.BankBranchId,
-                    BankCompanyName = order.BankBranch.BankCompany.BankCompanyName,
-                    SupplierName = order.SupplierBranch.Supplier.SupplierName,
+                    CompanyId = order.CompanyBranch.CompanyId,
+                    CompanyBranchName = order.CompanyBranch.CompanyBranchName,
+                    CompanyName = order.CompanyBranch.Company.CompanyName,
                     CreationDate = order.CreationDate,
                     OrderStatus = order.OrderStatus,
                     OrderId = order.OrderId,
-                    BankOrderReference = order.BankOrderReference,
-                    SupplierOrderReference = order.SupplierOrderReference,
-                    BankBranchName = order.BankBranch.BankBranchName,
+                     CompanyOrderReference = order.CompanyOrderReference,
                     NumberOfItems = order.OrderItems.Count
                 });
             }
@@ -113,27 +109,23 @@ namespace FoodBank.Core.Business.Order
             return model;
         }
 
-        public async Task<OrderIndexModel> GetSupplierBranchOrders(Guid id)
+        public async Task<OrderIndexModel> GetCompanyBranchOrders(Guid id)
         {
             //todo anonymous type it
             var model = new OrderIndexModel();
 
-            var orders = _appDbContext.Orders.Where(o => o.SupplierBranchId == id);
+            var orders = _appDbContext.Orders.Where(o => o.CompanyBranchId == id);
             foreach (var order in await orders.ToListAsync())
             {
                 model.OrderIndexItemModels.Add(new OrderIndexItemModel()
                 {
-                    SupplierId = order.SupplierBranch.SupplierId,
-                    SupplierBranchName = order.SupplierBranch.SupplierBranchName,
-                    BankBranchId = order.BankBranchId,
-                    BankCompanyName = order.BankBranch.BankCompany.BankCompanyName,
-                    SupplierName = order.SupplierBranch.Supplier.SupplierName,
+                    CompanyId = order.CompanyBranch.CompanyId,
+                    CompanyBranchName = order.CompanyBranch.CompanyBranchName,
+                   CompanyName = order.CompanyBranch.Company.CompanyName,
                     CreationDate = order.CreationDate,
                     OrderStatus = order.OrderStatus,
                     OrderId = order.OrderId,
-                    BankOrderReference = order.BankOrderReference,
-                    SupplierOrderReference = order.SupplierOrderReference,
-                    BankBranchName = order.BankBranch.BankBranchName,
+                    CompanyOrderReference = order.CompanyOrderReference,
                     NumberOfItems = order.OrderItems.Count
                 });
             }

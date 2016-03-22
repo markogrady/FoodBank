@@ -11,7 +11,7 @@ namespace FoodBank.Core.Dto.Listing
     {
         public Guid ListingId { get; set; }
 
-        public string SupplierReference { get; set; }
+        public string CompanyReference { get; set; }
         public string ListingName { get; set; }
         public string Description { get; set; }
         public decimal Quantity { get; set; }

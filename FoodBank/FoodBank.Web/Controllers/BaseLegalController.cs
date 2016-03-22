@@ -101,20 +101,20 @@ namespace FoodBank.Web.Controllers
         private AuthBankModel GetAuthFirmModel(Guid userId)
         {
             var model = new AuthBankModel();
-            using (var context = new AppDbContext())
-            {
-                var bankUser = context.BankUsers.Select(o => new
-                {
-                    o.BankUserId,
-                    o.BankCompanyId,
-                    o.BankCompany.BankCompanyName
-                }).FirstOrDefault(o => o.BankUserId == userId);
-                if (bankUser != null)
-                {
-                    model.BankCompanyId = bankUser.BankCompanyId;
-                    model.BankCompanyName = bankUser.BankCompanyName;
-                }
-            }
+            //using (var context = new AppDbContext())
+            //{
+            //    var bankUser = context.CompanyUsers.Select(o => new
+            //    {
+            //        o.BankUserId,
+            //        o.BankCompanyId,
+            //        o.BankCompany.BankCompanyName
+            //    }).FirstOrDefault(o => o.BankUserId == userId);
+            //    if (bankUser != null)
+            //    {
+            //        model.BankCompanyId = bankUser.BankCompanyId;
+            //        model.BankCompanyName = bankUser.BankCompanyName;
+            //    }
+            //}
             return model;
         }
 

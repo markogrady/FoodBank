@@ -4,6 +4,6 @@
     {
         NotSet = 0,
         FoodBank = 1,
-        Supplier = 2
+        Company = 2
     }
 }

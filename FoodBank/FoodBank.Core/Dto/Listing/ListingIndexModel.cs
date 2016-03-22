@@ -18,12 +18,12 @@ namespace FoodBank.Core.Dto.Listing
     public class ListingIndexItemModel
     {
         public Guid ListingId { get; set; }
-        public Guid SupplierId { get; set; }
-        public string SupplierName { get; set; }
+        public Guid CompanyId { get; set; }
+        public string CompanyName { get; set; }
         public string ListingName { get; set; }
         public decimal TotalQuantity { get; set; }
         public decimal QuantityAvailable { get; set; }
         public string BranchName { get; set; }
-        public string SupplierReference { get; set; }
+        public string CompanyReference { get; set; }
     }
 }

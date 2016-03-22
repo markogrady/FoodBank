@@ -10,11 +10,11 @@ namespace FoodBank.Core.Dto.Listing
     public class ListingCreateModel
     {
         public string ListingName { get; set; }
-        public string SupplierReference { get; set; }   
+        public string CompanyReference { get; set; }   
         public string Description { get; set; }
         public decimal Quantity { get; set; }
         public DateTime? UseByDate { get; set; }
-        public Guid SupplierBranchId  { get; set; }
-        public List<SelectListItem> SupplierBranches { get; set; }
+        public Guid CompanyBranchId  { get; set; }
+        public List<SelectListItem> CompanyBranches { get; set; }
     }
 }

@@ -23,11 +23,11 @@ namespace FoodBank.Core.Seed
                 var roleResult = roleManager.Create(adminRole);
             }
 
-            var supplierRole = roleManager.FindByName("Supplier");
-            if (supplierRole == null)
+            var CompanyRole = roleManager.FindByName("Company");
+            if (CompanyRole == null)
             {
-                supplierRole = new ApplicationRole("Supplier");
-                var roleResult = roleManager.Create(supplierRole);
+                CompanyRole = new ApplicationRole("Company");
+                var roleResult = roleManager.Create(CompanyRole);
             }
 
             var foodBankRole = roleManager.FindByName("FoodBank");

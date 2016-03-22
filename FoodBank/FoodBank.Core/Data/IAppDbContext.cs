@@ -10,14 +10,12 @@ namespace FoodBank.Core.Data
         int SaveChanges();
         Task<int> SaveChangesAsync();
 
-        IDbSet<BankUser> BankUsers { get; set; }
-        IDbSet<BankBranch> BankBranches { get; set; }
-        IDbSet<BankCompany> BankCompanies { get; set; }
+       
         IDbSet<Listing> Listings { get; set; }
         IDbSet<OrderItem> OrderItems { get; set; }
-        IDbSet<Supplier> Suppliers { get; set; }
-        IDbSet<SupplierBranch> SupplierBranches { get; set; }
-        IDbSet<SupplierUser> SupplierUsers { get; set; }
+        IDbSet<Company> Companies { get; set; }
+        IDbSet<CompanyBranch> CompanyBranches { get; set; }
+        IDbSet<CompanyUser> CompanyUsers { get; set; }
         IDbSet<Order> Orders { get; set; }
     }
 }

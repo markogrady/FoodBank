@@ -20,11 +20,11 @@ namespace FoodBank.Core.Dto.Order
     {
         public Guid OrderId { get; set; }
         public DateTime CreationDate  { get; set; }
-        public Guid SupplierId { get; set; }
-        public string SupplierName { get; set; }
-        public string SupplierBranchName { get; set; }
-        public string SupplierOrderReference { get; set; }
-        public string BankOrderReference { get; set; }
+        public Guid CompanyId { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyBranchName { get; set; }
+        public string CompanyOrderReference { get; set; }
+        
         public Guid BankBranchId { get; set; }
         public string BankCompanyName { get; set; }
         public int NumberOfItems { get; set; }
