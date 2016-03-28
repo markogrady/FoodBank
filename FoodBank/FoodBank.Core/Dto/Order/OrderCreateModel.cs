@@ -15,6 +15,6 @@ namespace FoodBank.Core.Dto.Order
     {
         public Guid ListingId { get; set; }
         public decimal Quantity { get; set; }
-        public string CustomerOrderItemReference { get; set; }
+        public string CustomerItemReference { get; set; }
     }
 }

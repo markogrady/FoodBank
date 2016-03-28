@@ -50,7 +50,7 @@ namespace FoodBank.Core.Business.Order
                 orderItem.OrderItemId = Guid.NewGuid();
                 orderItem.ListingId = item.ListingId;
                 orderItem.Quantity = item.Quantity;
-                orderItem.CustomerReference = item.CustomerOrderItemReference;
+                orderItem.CustomerItemReference = item.CustomerItemReference;
                 orderItem.OrderItemStatus = OrderItemStatus.Requested;
             }
 

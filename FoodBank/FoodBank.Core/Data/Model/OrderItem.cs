@@ -10,8 +10,8 @@ namespace FoodBank.Core.Data.Model
     public class OrderItem
     {
         public Guid OrderItemId { get; set; }
-        public string SupplierReference { get; set; }
-        public string CustomerReference { get; set; }
+        public string SupplierItemReference { get; set; }
+        public string CustomerItemReference { get; set; }
         public decimal Quantity { get; set; }
         public DateTime? CollectionDate { get; set; }
         public DateTime CreationDate { get; set; }
