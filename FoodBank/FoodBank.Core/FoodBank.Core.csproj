@@ -134,9 +134,15 @@
     <Compile Include="Business\DropDown\IDropDownBusiness.cs" />
     <Compile Include="Business\Listing\IListingBusiness.cs" />
     <Compile Include="Business\Order\IOrderBusiness.cs" />
+    <Compile Include="Business\Submission\ISubmissionBusiness.cs" />
     <Compile Include="Data\Enum\CompanyType.cs" />
+    <Compile Include="Data\Enum\ConditionType.cs" />
     <Compile Include="Data\Enum\OrderStatus.cs" />
+    <Compile Include="Data\Enum\SubmissionStatus.cs" />
+    <Compile Include="Data\Enum\SubmissionType.cs" />
     <Compile Include="Data\Model\Order.cs" />
+    <Compile Include="Data\Model\Product.cs" />
+    <Compile Include="Data\Model\Submission.cs" />
     <Compile Include="Dto\Order\OrderCreateModel.cs" />
     <Compile Include="Business\Company\ICompanyBusiness.cs" />
     <Compile Include="Data\AppDbContext.cs" />
@@ -162,6 +168,8 @@
     <Compile Include="Dto\Company\CompanyEditModel.cs" />
     <Compile Include="Dto\Company\CompanyBranchIndexModel.cs" />
     <Compile Include="Dto\Company\CompanyIndexModel.cs" />
+    <Compile Include="Dto\Submission\SubmissionCreateModel.cs" />
+    <Compile Include="Dto\Submission\SubmissionEditModel.cs" />
     <Compile Include="Helpers\ApplicationUserManager.cs" />
     <Compile Include="Mail\IEmailService.cs" />
     <Compile Include="Mail\MandrillEmail.cs" />
@@ -177,6 +185,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seed\SeedAll.cs" />
     <Compile Include="Seed\SeedListing.cs" />
+    <Compile Include="Seed\SeedProduct.cs" />
     <Compile Include="Seed\SeedProp.cs" />
     <Compile Include="Seed\SeedRole.cs" />
     <Compile Include="Seed\SeedCompanies.cs" />

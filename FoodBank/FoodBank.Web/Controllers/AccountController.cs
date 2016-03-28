@@ -5,8 +5,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using FoodBank.Core.Business.Company;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Model;
+using FoodBank.Core.Dto.Company;
 using FoodBank.Core.Helpers;
 using FoodBank.Core.Mail;
 using FoodBank.Core.Mail.Model;
@@ -23,13 +25,15 @@ namespace FoodBank.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
     private ApplicationUserManager _userManager;
+        private ICompanyBusiness _companyBusiness;
     private AppDbContext _context = new AppDbContext();
 
     private IEmailService _emailService;
 
-    public AccountController(IEmailService emailService)
+    public AccountController(IEmailService emailService, ICompanyBusiness companyBusiness)
     {
         _emailService = emailService;
+        _companyBusiness = companyBusiness;
     }
 
 
@@ -110,9 +114,9 @@ namespace FoodBank.Web.Controllers
                     //{
                     //    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                     //}
-                    if (await UserManager.IsInRoleAsync(user.Id, "Supplier"))
+                    if (await UserManager.IsInRoleAsync(user.Id, "Company"))
                     {
-                        return RedirectToAction("Index", "Dashboard", new { area = "Supplier" });
+                        return RedirectToAction("Index", "Dashboard", new { area = "" });
                     }
 
 
@@ -190,7 +194,7 @@ namespace FoodBank.Web.Controllers
     [HttpPost]
     [AllowAnonymous]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Register(RegisterViewModel model)
+    public async Task<ActionResult> Register(CompanyCreateModel model)
     {
         if (ModelState.IsValid)
         {
@@ -206,12 +210,12 @@ namespace FoodBank.Web.Controllers
             var result = await UserManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                //var firmId = await _companyBusiness.CreateCompany(new CreateCompanyModel() { CompanyName = model.CompanyName });
-                //await _companyBusiness.AddCompanyUser(user, firmId);
-                //await UserManager.AddToRoleAsync(user.Id, "Company");
-                return await GenerateEmailConfirmation(user);
-            }
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var firmId = await _companyBusiness.Create(model);
+                    await _companyBusiness.AddCompanyUser(user, firmId);
+                    await UserManager.AddToRoleAsync(user.Id, "Company");
+                    return await GenerateEmailConfirmation(user);
+                }
             AddErrors(result);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.AccessControl;
 using FoodBank.Core.Data.Enum;
 
@@ -18,10 +19,15 @@ namespace FoodBank.Core.Data.Model
         public decimal Quantity { get; set; }
         public DateTime? UseByDate { get; set; }
         public ListingStatus ListingStatus { get; set; }
+        public ConditionType ConditionType { get; set; }
         public DateTime CreationDate { get; set; }
         public Guid CompanyBranchId { get; set; }
         public virtual CompanyBranch CompanyBranch { get; set; }
 
+      
+
+        public Guid ProductId { get; set; }
+        public virtual Product Product { get; set; }
         public virtual ICollection<OrderItem> OrderItems{ get; set; }
 
     }

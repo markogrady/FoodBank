@@ -39,7 +39,9 @@ namespace FoodBank.Core.Business.Order
 
             var order = new Data.Model.Order();
             order.OrderId = id;
-            order.CompanyOrderReference = model.BankOrderReference;
+            order.SupplierId = model.SupplierBranchId;
+            order.CustomerId = model.CustomerBranchId;
+            order.CustomerOrderReference = model.CustomerOrderReference;
             order.OrderStatus = OrderStatus.Open;
             
             foreach (var item in model.OrderItems)
@@ -48,7 +50,7 @@ namespace FoodBank.Core.Business.Order
                 orderItem.OrderItemId = Guid.NewGuid();
                 orderItem.ListingId = item.ListingId;
                 orderItem.Quantity = item.Quantity;
-                orderItem.BankReference = item.BankReference;
+                orderItem.CustomerReference = item.CustomerOrderItemReference;
                 orderItem.OrderItemStatus = OrderItemStatus.Requested;
             }
 
@@ -65,7 +67,7 @@ namespace FoodBank.Core.Business.Order
             var orderItem = await _appDbContext.OrderItems.FirstOrDefaultAsync(o => o.OrderItemId == orderItemId);
             if (orderItem != null)
             {
-                orderItem.CompanyReference = CompanyReference;
+                orderItem.CustomerReference = CompanyReference;
                 await _appDbContext.SaveChangesAsync();
             }
         }
@@ -76,7 +78,15 @@ namespace FoodBank.Core.Business.Order
             if (orderItem != null)
             {
                 //Todo maybe some rules like if claim is cancelled to order amount to 0 but audit the change
-
+                switch (orderItemStatus)
+                {
+                        //case OrderItemStatus.Cancelled:
+                        //if (orderItem.OrderItemStatus == OrderItemStatus.Completed)
+                        //{
+                            
+                        //}
+                        //break;
+                }
 
                 orderItem.OrderItemStatus = orderItemStatus;
                 await _appDbContext.SaveChangesAsync();
@@ -89,18 +99,18 @@ namespace FoodBank.Core.Business.Order
             //todo anonymous type it
             var model = new OrderIndexModel();
 
-            var orders = _appDbContext.Orders.Where(o => o.CompanyBranch.CompanyId == id);
+            var orders = _appDbContext.Orders.Where(o => o.Customer.CompanyId == id);
             foreach (var order in orders)
             {
                 model.OrderIndexItemModels.Add(new OrderIndexItemModel()
                 {
-                    CompanyId = order.CompanyBranch.CompanyId,
-                    CompanyBranchName = order.CompanyBranch.CompanyBranchName,
-                    CompanyName = order.CompanyBranch.Company.CompanyName,
+                    CompanyId = order.Customer.CompanyId,
+                    CompanyBranchName = order.Customer.CompanyBranchName,
+                    CompanyName = order.Customer.Company.CompanyName,
                     CreationDate = order.CreationDate,
                     OrderStatus = order.OrderStatus,
                     OrderId = order.OrderId,
-                     CompanyOrderReference = order.CompanyOrderReference,
+                     CompanyOrderReference = order.CustomerOrderReference,
                     NumberOfItems = order.OrderItems.Count
                 });
             }
@@ -114,18 +124,18 @@ namespace FoodBank.Core.Business.Order
             //todo anonymous type it
             var model = new OrderIndexModel();
 
-            var orders = _appDbContext.Orders.Where(o => o.CompanyBranchId == id);
+            var orders = _appDbContext.Orders.Where(o => o.CustomerId == id);
             foreach (var order in await orders.ToListAsync())
             {
                 model.OrderIndexItemModels.Add(new OrderIndexItemModel()
                 {
-                    CompanyId = order.CompanyBranch.CompanyId,
-                    CompanyBranchName = order.CompanyBranch.CompanyBranchName,
-                   CompanyName = order.CompanyBranch.Company.CompanyName,
+                    CompanyId = order.Customer.CompanyId,
+                    CompanyBranchName = order.Customer.CompanyBranchName,
+                   CompanyName = order.Customer.Company.CompanyName,
                     CreationDate = order.CreationDate,
                     OrderStatus = order.OrderStatus,
                     OrderId = order.OrderId,
-                    CompanyOrderReference = order.CompanyOrderReference,
+                    CompanyOrderReference = order.CustomerOrderReference,
                     NumberOfItems = order.OrderItems.Count
                 });
             }

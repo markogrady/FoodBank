@@ -1,10 +1,10 @@
-﻿@model FoodBank.Core.Dto.Accountant.RegisterAccountantModel
+﻿@model FoodBank.Core.Dto.Company.CompanyCreateModel
 @{
     ViewBag.Title = "Register Conveyencer";
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
-@using (Html.BeginForm("RegisterAccountant", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+@using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
 {
     @Html.AntiForgeryToken()
     <div class="row">

@@ -24,6 +24,7 @@ namespace FoodBank.Core.Business.Company
         Task<CompanyBranchIndexModel> GetCompanyBranches(Guid id);
 
         Task<CompanyBranchEditModel> GetCompanyBranch(Guid id);
+        Task AddCompanyUser(AppUser user, Guid companyId);
     }
 
     public class CompanyBusiness : ICompanyBusiness
@@ -151,6 +152,17 @@ namespace FoodBank.Core.Business.Company
         public Task<CompanyBranchEditModel> GetCompanyBranch(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task AddCompanyUser(AppUser user, Guid companyId)
+        {
+            var companyBranch = await _appDbContext.CompanyBranches.FirstOrDefaultAsync(o => o.CompanyId == companyId);
+            var companyUser = new CompanyUser();
+            companyUser.CompanyId = companyId;
+            companyUser.CompanyUserId = user.Id;
+            companyUser.CompanyBranchId = companyBranch.CompanyBranchId;
+            _appDbContext.CompanyUsers.Add(companyUser);
+            await _appDbContext.SaveChangesAsync();
         }
     }
 }

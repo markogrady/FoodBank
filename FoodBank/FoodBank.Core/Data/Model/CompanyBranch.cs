@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace FoodBank.Core.Data.Model
         {
             Listings = new List<Listing>();
             CompanyUsers = new List<CompanyUser>();
-            Orders = new List<Order>();
+            SellOrders = new List<Order>();
+            BuyOrders = new List<Order>();
         }
 
         public Guid CompanyBranchId { get; set; }
@@ -34,6 +36,9 @@ namespace FoodBank.Core.Data.Model
 
         public virtual ICollection<CompanyUser> CompanyUsers { get; set; }
         public virtual ICollection<Listing> Listings { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        [InverseProperty("SupplierId")]
+        public virtual ICollection<Order> SellOrders { get; set; }
+        [InverseProperty("CustomerId")]
+        public virtual ICollection<Order> BuyOrders { get; set; }
     }
 }

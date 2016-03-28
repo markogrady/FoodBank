@@ -17,6 +17,7 @@ namespace FoodBank.Core.Data.Model
 
         public Guid CompanyId { get; set; }
         public string CompanyName { get; set; }
+        public CompanyType CompanyType { get; set; }
         public string LogoUrl { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }

@@ -30,12 +30,7 @@ namespace FoodBank.Core.Seed
                 var roleResult = roleManager.Create(CompanyRole);
             }
 
-            var foodBankRole = roleManager.FindByName("FoodBank");
-            if (foodBankRole == null)
-            {
-                foodBankRole = new ApplicationRole("FoodBank");
-                var roleResult = roleManager.Create(foodBankRole);
-            }
+          
 
     
         }
