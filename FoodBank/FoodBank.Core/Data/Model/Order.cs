@@ -20,7 +20,6 @@ namespace FoodBank.Core.Data.Model
         
 
         public Guid SupplierId { get; set; }
-        [ForeignKey("SupplierId")]
         public virtual CompanyBranch Supplier { get; set; }
 
 

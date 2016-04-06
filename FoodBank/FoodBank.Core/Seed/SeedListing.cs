@@ -20,6 +20,7 @@ namespace FoodBank.Core.Seed
 
             var listing1 = new Listing()
             {
+                ProductId = SeedProp.ProductId1,
                 ListingId = SeedProp.SeedListing1,
                 CreationDate = DateTime.UtcNow,
                 Description = "Doughnuts in packs of 10",
@@ -37,6 +38,8 @@ namespace FoodBank.Core.Seed
 
             listings.Add(new Listing()
             {
+                ProductId = SeedProp.ProductId2,
+
                 ListingId = SeedProp.SeedListing2,
                 CreationDate = DateTime.UtcNow,
                 Description = "Apples",
@@ -50,6 +53,8 @@ namespace FoodBank.Core.Seed
 
             listings.Add(new Listing()
             {
+                ProductId = SeedProp.ProductId3,
+
                 ListingId = SeedProp.SeedListing3,
                 CreationDate = DateTime.UtcNow,
                 Description = "CornFlakes Damaged Boxes",
@@ -63,6 +68,8 @@ namespace FoodBank.Core.Seed
 
             listings.Add(new Listing()
             {
+                ProductId = SeedProp.ProductId4,
+
                 ListingId = SeedProp.SeedListing4,
                 CreationDate = DateTime.UtcNow,
                 Description = "Coffee - Closed",
@@ -75,6 +82,8 @@ namespace FoodBank.Core.Seed
             });
             listings.Add(new Listing()
             {
+                ProductId = SeedProp.ProductId5,
+
                 ListingId = SeedProp.SeedListing5,
                 CreationDate = DateTime.UtcNow,
                 Description = "Mars bars",
@@ -87,6 +96,8 @@ namespace FoodBank.Core.Seed
             });
             listings.Add(new Listing()
             {
+                ProductId = SeedProp.ProductId6,
+
                 ListingId = SeedProp.SeedListing6,
                 CreationDate = DateTime.UtcNow,
                 Description = "Bread",
@@ -99,6 +110,8 @@ namespace FoodBank.Core.Seed
             });
             listings.Add(new Listing()
             {
+                ProductId = SeedProp.ProductId7,
+
                 ListingId = SeedProp.SeedListing7,
                 CreationDate = DateTime.UtcNow,
                 Description = "Sausage Rolls",

@@ -57,5 +57,13 @@ namespace FoodBank.Core.Seed
         public static Guid Listing1Claime2 = Guid.Parse("402E0ED2-735E-459E-859C-C843C2E54393");
         public static Guid Listing1Claime3 = Guid.Parse("FE98335E-CDD2-4138-B0AB-E0CFF53ED610");
         public static Guid Listing1Claime4 = Guid.Parse("749E2356-C8FD-4D29-89E7-4AFEC56538C5");
+        public static Guid ProductId1 = Guid.Parse("8A9ADE86-2FFE-4CCD-9B1E-102368B56DAF");
+        public static Guid ProductId2 = Guid.Parse("B48008D8-5701-4679-868C-ECFB90830054");
+        public static Guid ProductId3 = Guid.Parse("B20E7985-1714-443A-8DC8-E1B9CDF04B35");
+        public static Guid ProductId4 = Guid.Parse("7DDE4FDE-86C9-4B32-A574-C92226E660F3");
+        public static Guid ProductId5 = Guid.Parse("5FEC9C13-6F67-4F1C-B577-95F9DED574C8");
+        public static Guid ProductId6 = Guid.Parse("79D65035-4DB2-4C5E-9399-2E026841A269");
+        public static Guid ProductId7 = Guid.Parse("81F09F34-C406-40CF-8FC4-B9B4A5340905");
+    
     }
 }

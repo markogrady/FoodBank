@@ -47,9 +47,23 @@ namespace FoodBank.Core.Data
 
             return base.SaveChangesAsync();
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+         public IDbSet<Product> Products { get; set; }
+
+         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<CompanyBranch>()
+                    .HasMany<Order>(s => s.SellOrders)
+                    .WithRequired(s => s.Supplier)
+                    .HasForeignKey(s => s.SupplierId);
+
+
+            modelBuilder.Entity<CompanyBranch>()
+                    .HasMany<Order>(s => s.BuyOrders)
+                    .WithRequired(s => s.Customer)
+                    .HasForeignKey(s => s.CustomerId);
             base.OnModelCreating(modelBuilder);
         }
        
@@ -59,5 +73,6 @@ namespace FoodBank.Core.Data
          public IDbSet<CompanyBranch> CompanyBranches { get; set; }
          public IDbSet<CompanyUser> CompanyUsers { get; set; }
          public IDbSet<Order> Orders { get; set; }
+         public IDbSet<Submission> Submissions { get; set; }
     }
 }

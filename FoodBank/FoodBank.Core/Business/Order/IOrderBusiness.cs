@@ -13,7 +13,7 @@ namespace FoodBank.Core.Business.Order
     public interface IOrderBusiness
     {
         Task<Guid> Create(OrderCreateModel model);
-        Task SetCompanyReference(Guid orderItemId, string CompanyReference);
+        Task SetCompanyReference(Guid orderItemId, string customerItemReference);
         Task UpdateStatus(Guid id, OrderItemStatus orderItemStatus);
         Task<OrderIndexModel> GetCompanyOrders(Guid id);
         Task<OrderIndexModel> GetCompanyBranchOrders(Guid id);
@@ -62,12 +62,12 @@ namespace FoodBank.Core.Business.Order
 
       
 
-        public async Task SetCompanyReference(Guid orderItemId, string CompanyReference)
+        public async Task SetCompanyReference(Guid orderItemId, string customerItemReference)
         {
             var orderItem = await _appDbContext.OrderItems.FirstOrDefaultAsync(o => o.OrderItemId == orderItemId);
             if (orderItem != null)
             {
-                orderItem.CustomerReference = CompanyReference;
+                orderItem.CustomerItemReference = customerItemReference;
                 await _appDbContext.SaveChangesAsync();
             }
         }

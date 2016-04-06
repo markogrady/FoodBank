@@ -36,8 +36,10 @@ namespace FoodBank.Core.Data.Model
 
         public virtual ICollection<CompanyUser> CompanyUsers { get; set; }
         public virtual ICollection<Listing> Listings { get; set; }
-        [InverseProperty("SupplierId")]
+
+       
         public virtual ICollection<Order> SellOrders { get; set; }
+
         [InverseProperty("CustomerId")]
         public virtual ICollection<Order> BuyOrders { get; set; }
     }

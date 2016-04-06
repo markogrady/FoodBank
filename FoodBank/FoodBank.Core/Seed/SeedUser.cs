@@ -18,7 +18,7 @@ namespace FoodBank.Core.Seed
         {
             CreateUser(context,SeedProp.UserAdmin1, "mark.ogrady+admin@questionset.com", "Mark", "O'Grady", "Password9!", "Admin", "https://trackthechain.blob.core.windows.net/siteresource/mark5.jpg");
             CreateUser(context, SeedProp.UserCompany1, SeedProp.CompanyEmail1, "Tom", "West", "Password9!", "Company", "https://lawdocs.blob.core.windows.net/avatar/avatar/image_8f974aa5-3cb3-4114-a780-ea46281cad1e.jpg");
-            CreateUser(context, SeedProp.UserFoodBank1, SeedProp.FoodBankEmail1, "Julia", "Davis", "Password9!", "FoodBank", "https://trackthechain.blob.core.windows.net/siteresource/estate2.png");
+            //CreateUser(context, SeedProp.UserFoodBank1, SeedProp.FoodBankEmail1, "Julia", "Davis", "Password9!", "FoodBank", "https://trackthechain.blob.core.windows.net/siteresource/estate2.png");
             
             context.SaveChanges();
         }
