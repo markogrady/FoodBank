@@ -67,10 +67,10 @@ namespace FoodBank.Web.Controllers
 
                         _authenticatedUser.Avatar = !String.IsNullOrEmpty(_authenticatedUser.AppUser.AvatarUrl) ? _authenticatedUser.AppUser.AvatarUrl : "/assets/images/placeholder.jpg";
 
-                        if (User.IsInRole("FoodBank"))
+                        if (User.IsInRole("Company"))
                         {
-                            _authenticatedUser.AuthBankModel = GetAuthFirmModel(_authenticatedUser.UserId);
-                            _authenticatedUser.CompanyFirmId = _authenticatedUser.AuthBankModel.BankCompanyId;
+                            _authenticatedUser.AuthCompanyModel = GetAuthFirmModel(_authenticatedUser.UserId);
+                            _authenticatedUser.CompanyFirmId = _authenticatedUser.AuthCompanyModel.CompanyId;
                             _authenticatedUser.PartyType = PartyType.FoodBank;
                         }
                         //if (User.IsInRole("Admin"))
@@ -98,23 +98,28 @@ namespace FoodBank.Web.Controllers
             set { _authenticatedUser = value; }
         }
 
-        private AuthBankModel GetAuthFirmModel(Guid userId)
+        private AuthCompanyModel GetAuthFirmModel(Guid userId)
         {
-            var model = new AuthBankModel();
-            //using (var context = new AppDbContext())
-            //{
-            //    var bankUser = context.CompanyUsers.Select(o => new
-            //    {
-            //        o.BankUserId,
-            //        o.BankCompanyId,
-            //        o.BankCompany.BankCompanyName
-            //    }).FirstOrDefault(o => o.BankUserId == userId);
-            //    if (bankUser != null)
-            //    {
-            //        model.BankCompanyId = bankUser.BankCompanyId;
-            //        model.BankCompanyName = bankUser.BankCompanyName;
-            //    }
-            //}
+            var model = new AuthCompanyModel();
+            using (var context = new AppDbContext())
+            {
+                var bankUser = context.CompanyUsers.Select(o => new
+                {
+                    o.CompanyUserId,
+                    o.CompanyId,
+                    o.Company.CompanyName,
+                    o.CompanyBranch.CompanyBranchName,
+                    o.CompanyBranchId
+                }).FirstOrDefault(o => o.CompanyUserId == userId);
+                if (bankUser != null)
+                {
+                    model.CompanyId = bankUser.CompanyId;
+                    model.CompanyName = bankUser.CompanyName;
+                    model.CompanyBranchId = bankUser.CompanyBranchId;
+                    model.BranchName = bankUser.CompanyBranchName;
+
+                }
+            }
             return model;
         }
 
@@ -155,8 +160,8 @@ namespace FoodBank.Web.Controllers
                 ViewBag.FullName = this.AuthenticatedUser.AppUser.FirstName + " " + AuthenticatedUser.AppUser.LastName;
                 ViewBag.Avatar = this.AuthenticatedUser.Avatar;
 
-                if (AuthenticatedUser.AuthBankModel != null)
-                    ViewBag.CompanyName = this.AuthenticatedUser.AuthBankModel.BankCompanyName;
+                if (AuthenticatedUser.AuthCompanyModel != null)
+                    ViewBag.CompanyName = this.AuthenticatedUser.AuthCompanyModel.CompanyName;
             }
 
         }

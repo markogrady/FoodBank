@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using FoodBank.Core.Business.DropDown;
 using FoodBank.Core.Business.Listing;
-using FoodBank.Core.Data;
 using FoodBank.Core.Dto.Listing;
-using FoodBank.Web.Controllers;
 
-namespace FoodBank.Web.Areas.Supplier.Controllers
+namespace FoodBank.Web.Controllers
 {
+    [Authorize]
     public class ListingsController : BaseFoodController
     {
         private readonly IListingBusiness _listingBusiness;
@@ -41,7 +37,7 @@ namespace FoodBank.Web.Areas.Supplier.Controllers
         public ActionResult Create()
         {
             var model = new ListingCreateModel();
-            model.CompanyBranchId = AuthenticatedUser.AuthSupplierModel.SupplierBranchId;
+            model.CompanyBranchId = AuthenticatedUser.AuthCompanyModel.CompanyBranchId;
             model.CompanyBranches = _dropDownBusiness.GetBranches(AuthenticatedUser.CompanyFirmId);
             return View(model);
         }

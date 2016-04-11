@@ -15,24 +15,19 @@ namespace FoodBank.Web.Models
         public PartyType PartyType { get; set; }
         public AppUser AppUser { get; set; }
 
-        public AuthBankModel AuthBankModel { get; set; }
-        public AuthSupplierModel AuthSupplierModel { get; set; }
+        
+        public AuthCompanyModel AuthCompanyModel { get; set; }
     }
 
-    public class AuthSupplierModel
+    public class AuthCompanyModel
     {
-        public Guid SupplierId { get; set; }
-        public Guid SupplierBranchId { get; set; }
+        public Guid CompanyId { get; set; }
+        public Guid CompanyBranchId { get; set; }
         public string BranchName { get; set; }
 
-        public string SupplierName { get; set; }
+        public string CompanyName { get; set; }
     }
 
-    public class AuthBankModel
-    {
-        public Guid BankCompanyId { get; set; }
-        public string BankCompanyName { get; set; }
-        public Guid BankUserId { get; set; }
-    }
+  
 
 }

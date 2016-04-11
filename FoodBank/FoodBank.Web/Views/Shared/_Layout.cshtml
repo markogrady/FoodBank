@@ -145,12 +145,10 @@
                                     {
                                         switch (area.ToLower())
                                         {
-                                            case "client":
-                                                @Html.Partial("~/Views/Shared/Menu/_ClientMenu.cshtml")
+                                            case "Company":
+                                                @Html.Partial("~/Views/Shared/Menu/_CompanyMenu.cshtml")
                                                 break;
-                                            case "firm":
-                                                @Html.Partial("~/Views/Shared/Menu/_LawyerMenu.cshtml")
-                                                break;
+                                          
                                             default:
                                                 @Html.Partial("~/Views/Shared/Menu/_GeneralMenu.cshtml")
 
@@ -159,18 +157,11 @@
                                     }
                                     else
                                     {
-                                        if (User.IsInRole("Lawyer"))
+                                        if (User.IsInRole("Company"))
                                         {
-                                            @Html.Partial("~/Views/Shared/Menu/_LawyerMenu.cshtml")
+                                            @Html.Partial("~/Views/Shared/Menu/_CompanyMenu.cshtml")
                                         }
-                                        if (User.IsInRole("LawGroup"))
-                                        {
-                                            @Html.Partial("~/Views/Shared/Menu/_LawGroupMenu.cshtml")
-                                        }
-                                        if (User.IsInRole("Client"))
-                                        {
-                                            @Html.Partial("~/Views/Shared/Menu/_ClientMenu.cshtml")
-                                        }
+                                       
                                         if (User.IsInRole("Administrator"))
                                         {
                                             @Html.Partial("~/Views/Shared/Menu/_GeneralMenu.cshtml")

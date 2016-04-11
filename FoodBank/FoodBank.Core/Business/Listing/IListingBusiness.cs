@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Configuration;
+using Aspose.Words;
 using Aspose.Words.Drawing;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Enum;
@@ -87,31 +88,37 @@ namespace FoodBank.Core.Business.Listing
             var listing = await _appDbContext.Listings.FirstOrDefaultAsync(o => o.ListingId == listingId);
             if (listing != null)
             {
-               
-                    listing.ListingStatus = listingStatus;
-                    //todo if outstanding claims then contact them
-               
+
+                listing.ListingStatus = listingStatus;
+                //todo if outstanding claims then contact them
+
                 await _appDbContext.SaveChangesAsync();
             }
         }
 
         public async Task<ListingIndexModel> GetListings()
         {
-            return await GetListings(null,null ,"", null, ListingStatus.NotSet);
+            return await GetListings(null, null, "", null, ListingStatus.NotSet);
         }
 
-        private async Task<ListingIndexModel> GetListings(Guid? CompanyId,Guid? CompanyBranchId ,string postcode,int? distance, ListingStatus listingStatus)
+        private async Task<ListingIndexModel> GetListings(Guid? companyId, Guid? companyBranchId, string postcode, int? distance, ListingStatus listingStatus)
         {
             var model = new ListingIndexModel();
 
             IQueryable<Data.Model.Listing> listings = _appDbContext.Listings;
 
-            if (CompanyId != null)
-                listings = listings.Where(o => o.CompanyBranch.CompanyId == CompanyId.Value);
-            if (CompanyId != null)
-                listings = listings.Where(o => o.CompanyBranchId== CompanyBranchId.Value);
+
+            if (companyId != Guid.Empty)
+                listings = listings.Where(o => o.CompanyBranch.CompanyId == companyId.Value);
+
+
+            if (companyBranchId != Guid.Empty)
+            {
+                if (companyBranchId != null)
+                listings = listings.Where(o => o.CompanyBranchId == companyBranchId.Value);
+            }
             if (listingStatus != ListingStatus.NotSet)
-                listings = listings.Where(o => o.ListingStatus== listingStatus);
+                listings = listings.Where(o => o.ListingStatus == listingStatus);
             //todo workout the closest
 
             foreach (var listing in await listings.ToListAsync())
@@ -121,10 +128,11 @@ namespace FoodBank.Core.Business.Listing
                     ListingId = listing.ListingId,
                     TotalQuantity = listing.Quantity,
                     QuantityAvailable = listing.Quantity - listing.OrderItems.Where(o => !(o.OrderItemStatus == OrderItemStatus.Confirmed || o.OrderItemStatus == OrderItemStatus.Completed)).Sum(o => o.Quantity),
-                    ListingName = listing.ListingName,
+                    ListingName = listing.Product.ProductName,
                     CompanyId = listing.CompanyBranch.CompanyId,
-                    CompanyName = listing.CompanyBranch.Company.CompanyName
-
+                    CompanyName = listing.CompanyBranch.Company.CompanyName,
+                    BranchName = listing.CompanyBranch.CompanyBranchName,
+                    CompanyReference = listing.CompanyReference
                 });
             }
             return model;
@@ -132,7 +140,7 @@ namespace FoodBank.Core.Business.Listing
 
         public async Task<ListingEditModel> GetListing(Guid id)
         {
-           var model = new ListingEditModel();
+            var model = new ListingEditModel();
             var listing = await _appDbContext.Listings.FirstOrDefaultAsync(o => o.ListingId == id);
             if (listing != null)
             {

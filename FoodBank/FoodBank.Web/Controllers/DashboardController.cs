@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace FoodBank.Web.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseFoodController
     {
         // GET: Dashboard
         public ActionResult Index()
