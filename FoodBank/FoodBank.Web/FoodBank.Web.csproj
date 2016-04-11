@@ -225,6 +225,8 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ClaimListingController.cs" />
     <Compile Include="Controllers\ListingsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
@@ -233,6 +235,8 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2983,6 +2987,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Views\Checkout\Index.cshtml" />
     <None Include="Views\Listings\Create.cshtml" />
     <None Include="Views\Listings\Edit.cshtml" />
     <None Include="Views\Listings\Index.cshtml" />
@@ -3033,12 +3038,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Shared\Menu\_AccountantCompanyMenu.cshtml" />
-    <Content Include="Views\Shared\Menu\_ClientMenu.cshtml" />
     <Content Include="Views\Shared\Menu\_CompanyMenu.cshtml" />
     <Content Include="Views\Shared\Menu\_GeneralMenu.cshtml" />
-    <Content Include="Views\Shared\Menu\_LawGroupMenu.cshtml" />
-    <Content Include="Views\Shared\Menu\_LawyerMenu.cshtml" />
     <Content Include="Views\Shared\Modal\_DeleteModal.cshtml" />
     <Content Include="Views\Shared\Page\NotificationTab.cshtml" />
     <Content Include="Views\Shared\Page\PageHeader.cshtml" />
@@ -3049,10 +3050,15 @@
     <Content Include="Views\Account\RegenerateEmailConfirmation.cshtml" />
     <Content Include="Views\Account\RegisterAccountant.cshtml" />
     <Content Include="Views\Account\RegisterAffiliate.cshtml" />
+    <None Include="Views\Product\Create.cshtml" />
+    <None Include="Views\Product\Edit.cshtml" />
+    <None Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Views\ClaimListing\" />
+    <Folder Include="Views\Setting\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

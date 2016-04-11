@@ -9,6 +9,7 @@ namespace FoodBank.Core.Business.DropDown
     public interface IDropDownBusiness
     {
         List<SelectListItem> GetBranches(Guid CompanyId);
+        List<SelectListItem> GetProducts();
     }
 
     public class DropDownBusiness : IDropDownBusiness
@@ -36,6 +37,28 @@ namespace FoodBank.Core.Business.DropDown
                 {
                     Text = branch.Text,
                     Value = branch.Value.ToString()
+                });
+            }
+
+            return model;
+        }
+
+        public List<SelectListItem> GetProducts()
+        {
+            var model = new List<SelectListItem>();
+            var products = _appDbContext.Products.Select(o => new
+            {
+               
+                Text = o.ProductName,
+                Value = o.ProductId
+            });
+
+            foreach (var product in products.ToList())
+            {
+                model.Add(new SelectListItem()
+                {
+                    Text = product.Text,
+                    Value = product.Value.ToString()
                 });
             }
 

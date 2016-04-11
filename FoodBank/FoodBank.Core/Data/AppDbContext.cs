@@ -48,6 +48,9 @@ namespace FoodBank.Core.Data
             return base.SaveChangesAsync();
         }
 
+         public IDbSet<Basket> Baskets { get; set; }
+         public IDbSet<BasketItem> BasketItems { get; set; }
+
          public IDbSet<Product> Products { get; set; }
 
          protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,7 +1,9 @@
+using FoodBank.Core.Business.Basket;
 using FoodBank.Core.Business.Company;
 using FoodBank.Core.Business.DropDown;
 using FoodBank.Core.Business.Listing;
 using FoodBank.Core.Business.Order;
+using FoodBank.Core.Business.Product;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Model;
 using FoodBank.Core.Mail;
@@ -76,6 +78,8 @@ namespace FoodBank.Web.App_Start
             kernel.Bind<IListingBusiness>().To<ListingBusiness>();
             kernel.Bind<ICompanyBusiness>().To<CompanyBusiness>();
             kernel.Bind<IOrderBusiness>().To<OrderBusiness>();
+            kernel.Bind<IProductBusiness>().To<ProductBusiness>();
+            kernel.Bind<IBasketBusiness>().To<BasketBusiness>();
             kernel.Bind<IUserStore<AppUser, Guid>>().To<AppUserStore>();
             kernel.Bind<UserManager<AppUser, Guid>>().ToSelf();
         }        

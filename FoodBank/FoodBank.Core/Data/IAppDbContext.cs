@@ -10,7 +10,9 @@ namespace FoodBank.Core.Data
         int SaveChanges();
         Task<int> SaveChangesAsync();
 
-       IDbSet<Product> Products { get; set; }
+        IDbSet<Basket> Baskets { get; set; }
+        IDbSet<BasketItem> BasketItems { get; set; }
+            IDbSet<Product> Products { get; set; }
             IDbSet<Listing> Listings { get; set; }
         IDbSet<OrderItem> OrderItems { get; set; }
         IDbSet<Company> Companies { get; set; }

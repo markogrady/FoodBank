@@ -1,18 +1,19 @@
 ﻿
 <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
 <li class="@(ViewBag.MenuItem == "Dashboard" ? "active" : "")"><a href="@Url.Action("Index","Dashboard", new {area=""})"><i class="icon-grid"></i> <span>Dashboard</span></a></li>
-<li class="@(ViewBag.MenuItem == "Messages" ? "active" : "")"><a href="@Url.Action("Index", "Orders", new {area=""})"><i class="icon-mailbox"></i> <span>Claimed From Other Orders</span></a></li>
-<li class="@(ViewBag.MenuItem == "Messages" ? "active" : "")"><a href="@Url.Action("Index", "Orders", new {area=""})"><i class="icon-mailbox"></i> <span>Internal Food Orders</span></a></li>
-<li class="@(ViewBag.MenuItem == "Listings" ? "active" : "")"><a href="@Url.Action("Index","Listings", new {area=""})"><i class="icon-home7"></i> <span>Claim Food</span></a></li>
-<li class="@(ViewBag.MenuItem == "Listings" ? "active" : "")"><a href="@Url.Action("Index","Listings", new {area=""})"><i class="icon-home7"></i> <span>Listings</span></a></li>
+<li class="@(ViewBag.MenuItem == "Order" ? "active" : "")"><a href="@Url.Action("Index", "Orders", new {area=""})"><i class="icon-cart2"></i> <span>Claimed From Other Orders</span></a></li>
+<li class="@(ViewBag.MenuItem == "Order" ? "active" : "")"><a href="@Url.Action("Index", "Orders", new {area=""})"><i class="icon-truck"></i> <span>Send Food Orders</span></a></li>
+<li class="@(ViewBag.MenuItem == "Products" ? "active" : "")"><a href="@Url.Action("Index","Product", new {area=""})"><i class="icon-package"></i> <span>Products</span></a></li>
+<li class="@(ViewBag.MenuItem == "Listings" ? "active" : "")"><a href="@Url.Action("Index","Listings", new {area=""})"><i class="icon-indent-increase"></i> <span>Claim Food</span></a></li>
+<li class="@(ViewBag.MenuItem == "Listings" ? "active" : "")"><a href="@Url.Action("Index","Listings", new {area=""})"><i class="icon-indent-decrease"></i> <span>Listings</span></a></li>
 
 <li>
     <a href="#"><i class="icon-gear"></i> <span>Settings</span></a>
     <ul>
-        @*<li class="@(ViewBag.MenuItem == "GeneralSettings" ? "active" : "")"><a href="@Url.Action("Index", "Setting", new {area = ""})">General</a></li>
-        <li class="@(ViewBag.MenuItem == "NotificationSettings" ? "active" : "")"><a href="@Url.Action("Notifications", "Setting", new {area = ""})">Notifications</a></li>
-        <li class="@(ViewBag.MenuItem == "ConveyancerSettings" ? "active" : "")"><a href="@Url.Action("Edit", "Conveyancer", new {area = "Conveyancer"})">Conveyancer</a></li>
-        <li class="@(ViewBag.MenuItem == "Payment" ? "active" : "")"><a href="@Url.Action("Index", "Payments", new {area = "Conveyancer"})">Payments</a></li>*@
+        <li class="@(ViewBag.MenuItem == "GeneralSettings" ? "active" : "")"><a href="@Url.Action("Index", "Setting", new {area = ""})">General</a></li>
+        <li class="@(ViewBag.MenuItem == "NotificationSettings" ? "active" : "")"><a href="@Url.Action("Notification", "Setting", new {area = ""})">Notifications</a></li>
+        <li class="@(ViewBag.MenuItem == "Company" ? "active" : "")"><a href="@Url.Action("Edit", "Company", new {area = ""})">Company</a></li>
+      
         <li class="@(ViewBag.MenuItem == "UserSettings" ? "active" : "")"><a href="@Url.Action("Index", "Manage", new {area = ""})">User Details</a></li>
 
 

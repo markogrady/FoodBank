@@ -39,14 +39,14 @@ namespace FoodBank.Web.Controllers
             var model = new ListingCreateModel();
             model.CompanyBranchId = AuthenticatedUser.AuthCompanyModel.CompanyBranchId;
             model.CompanyBranches = _dropDownBusiness.GetBranches(AuthenticatedUser.CompanyFirmId);
+            model.Products = _dropDownBusiness.GetProducts();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(ListingCreateModel model)
+        public async Task<ActionResult> Create(ListingCreateModel model)
         {
-            
-            var id = _listingBusiness.Create(model);
+            var id = await _listingBusiness.Create(model);
             Success("Listing Created");
             return RedirectToAction("Edit","Listings", new {id = id});
         }

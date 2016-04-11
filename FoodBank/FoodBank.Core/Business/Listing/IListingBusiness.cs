@@ -28,6 +28,7 @@ namespace FoodBank.Core.Business.Listing
     {
         private readonly IAppDbContext _appDbContext;
 
+
         public ListingBusiness(IAppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
@@ -38,7 +39,7 @@ namespace FoodBank.Core.Business.Listing
             var id = Guid.NewGuid();
             var listing = new Data.Model.Listing();
             listing.ListingId = id;
-
+            
             listing.CompanyBranchId = model.CompanyBranchId;
             listing.Description = model.Description;
             listing.ListingName = model.ListingName;
@@ -47,8 +48,10 @@ namespace FoodBank.Core.Business.Listing
             listing.UseByDate = model.UseByDate;
             listing.ListingStatus = ListingStatus.Open;
             listing.CreationDate = DateTime.UtcNow;
-
+            listing.ProductId = model.ProductId;
+            listing.ConditionType = model.ConditionType;
             _appDbContext.Listings.Add(listing);
+
             await _appDbContext.SaveChangesAsync();
             return id;
         }

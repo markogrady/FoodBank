@@ -1,12 +1,9 @@
-﻿@model FoodBank.Core.Dto.Listing.ListingCreateModel
-
-@using FoodBank.Core.Data.Enum
-@using FoodBank.Web.Helpers
-
+﻿@using FoodBank.Web.Helpers
+@model FoodBank.Core.Dto.Product.ProductCreateModel
 
 @{
-    ViewBag.Title = "Create Listing";
-    ViewBag.MenuItem = "listing";
+    ViewBag.Title = "Product";
+    ViewBag.MenuItem = "Product";
 }
 
 
@@ -35,17 +32,12 @@
         <div class="panel-body">
 
 
-            @using (Html.BeginForm("Create", "Listings", new {area = ""}, FormMethod.Post, new {@class = "form-horizontal", enctype = "multipart/form-data"}))
+            @using (Html.BeginForm("Create", "Product", new { area = "" }, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
+               
                 <fieldset class="content-group">
-                    @Html.TtcDropDownFor(o => o.CompanyBranchId,Model.CompanyBranches, "Branch",true)
-                    @Html.TtcDropDownFor(o => o.ProductId,Model.Products, "Product",true)
-                    @Html.TtcEnumDropDownFor(o => o.ConditionType,typeof (ConditionType),"",true)
-                    @Html.TtcFullTextBoxFor(o => o.CompanyReference, "Company Reference")
-                    @Html.TtcFullTextBoxFor(o => o.ListingName, "ListingName")
+                    @Html.TtcFullTextBoxFor(o => o.ProductName, "Product Name")
                     @Html.TtcFullTextAreaFor(o => o.Description, "Description", 5, 5)
-                    @Html.TtcFullTextBoxFor(o => o.Quantity, "Quantity")
-                    @Html.TtcFullTextBoxFor(o => o.UseByDate, "Used By Date")
                 </fieldset>
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary">Save</button>
@@ -58,4 +50,3 @@
 
 </div>
 <!-- /content area -->
-   

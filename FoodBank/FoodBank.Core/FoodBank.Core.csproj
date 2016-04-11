@@ -131,18 +131,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Basket\IBasketBusiness.cs" />
     <Compile Include="Business\DropDown\IDropDownBusiness.cs" />
     <Compile Include="Business\Listing\IListingBusiness.cs" />
     <Compile Include="Business\Order\IOrderBusiness.cs" />
+    <Compile Include="Business\Product\IProductBusiness.cs" />
     <Compile Include="Business\Submission\ISubmissionBusiness.cs" />
     <Compile Include="Data\Enum\CompanyType.cs" />
     <Compile Include="Data\Enum\ConditionType.cs" />
     <Compile Include="Data\Enum\OrderStatus.cs" />
     <Compile Include="Data\Enum\SubmissionStatus.cs" />
     <Compile Include="Data\Enum\SubmissionType.cs" />
+    <Compile Include="Data\Model\Basket.cs" />
     <Compile Include="Data\Model\Order.cs" />
     <Compile Include="Data\Model\Product.cs" />
     <Compile Include="Data\Model\Submission.cs" />
+    <Compile Include="Dto\Basket\BasketAddModel.cs" />
+    <Compile Include="Dto\Basket\BasketEditModel.cs" />
+    <Compile Include="Dto\Basket\BasketSetQuanityModel.cs" />
+    <Compile Include="Dto\Order\OrderCreateFromBasketModel.cs" />
     <Compile Include="Dto\Order\OrderCreateModel.cs" />
     <Compile Include="Business\Company\ICompanyBusiness.cs" />
     <Compile Include="Data\AppDbContext.cs" />
@@ -168,6 +175,9 @@
     <Compile Include="Dto\Company\CompanyEditModel.cs" />
     <Compile Include="Dto\Company\CompanyBranchIndexModel.cs" />
     <Compile Include="Dto\Company\CompanyIndexModel.cs" />
+    <Compile Include="Dto\Product\ProductCreateModel.cs" />
+    <Compile Include="Dto\Product\ProductEditModel.cs" />
+    <Compile Include="Dto\Product\ProductIndexModel.cs" />
     <Compile Include="Dto\Submission\SubmissionCreateModel.cs" />
     <Compile Include="Dto\Submission\SubmissionEditModel.cs" />
     <Compile Include="Helpers\ApplicationUserManager.cs" />

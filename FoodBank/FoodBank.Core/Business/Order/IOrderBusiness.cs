@@ -17,6 +17,7 @@ namespace FoodBank.Core.Business.Order
         Task UpdateStatus(Guid id, OrderItemStatus orderItemStatus);
         Task<OrderIndexModel> GetCompanyOrders(Guid id);
         Task<OrderIndexModel> GetCompanyBranchOrders(Guid id);
+        Task CreateOrdersFromBasket(OrderCreateFromBasketModel model);
     }
 
     public class OrderBusiness : IOrderBusiness
@@ -142,6 +143,43 @@ namespace FoodBank.Core.Business.Order
 
 
             return model;
+        }
+
+        public async Task CreateOrdersFromBasket(OrderCreateFromBasketModel model)
+        {
+            //Get the basket 
+            var basket = await _appDbContext.Baskets.FirstOrDefaultAsync(o => o.BasketId == model.BasketId);
+            if (basket != null)
+            {
+                //group listings by supplier branch
+                var basketItemsByBranch = basket.BasketItems.GroupBy(
+                    o => o.Listing.CompanyBranchId, 
+                    (key,g) => new {
+                   BranchId = key,
+                   Items = g.ToList()
+                });
+                //place order for each branch
+                foreach (var basketGroup in basketItemsByBranch)
+                {
+                    var order = new Data.Model.Order();
+                    order.OrderId = Guid.NewGuid();
+                    order.SupplierId = model.SupplierBranchId;
+                    order.CustomerId = model.CustomerBranchId;
+                    order.CustomerOrderReference = model.CustomerOrderReference;
+                    order.OrderStatus = OrderStatus.Open;
+                    order.CreationDate = DateTime.UtcNow;
+                    foreach (var item in basketGroup.Items)
+                    {
+                        var orderItem = new OrderItem();
+                        orderItem.OrderItemId = Guid.NewGuid();
+                        orderItem.ListingId = item.ListingId;
+                        orderItem.Quantity = item.Quantity;
+                        orderItem.OrderItemStatus = OrderItemStatus.Requested;
+                    }
+                    _appDbContext.Orders.Add(order);
+                }
+                await _appDbContext.SaveChangesAsync();
+            }
         }
     }
 }

@@ -1,7 +1,0 @@
-﻿
-<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-<li class="@(ViewBag.MenuItem == "Requests" ? "active" : "")"><a href="@Url.Action("Index", "Requests", new {area = "Client"})"><i class="icon-list-unordered"></i> <span>Instructions</span></a></li>
-<li class="@(ViewBag.MenuItem == "Feedback" ? "active" : "")"><a href="@Url.Action("Index", "Feedback", new {area = "Client"})"><i class="icon-list-unordered"></i> <span>Feedback</span></a></li>
-<li class="@(ViewBag.MenuItem == "Messages" ? "active" : "")">@*<a href="@Url.Action("GetChannels", "DirectMessage", new {area=""})"><i class="icon-mailbox"></i> <span>Mailbox</span></a>*@</li>
-<li class="@(ViewBag.MenuItem == "Help" ? "active" : "")">@*<a href="@Url.Action("Index", "Help", new {area = "Client"})"><i class="icon-list-unordered"></i> <span>Help</span></a>*@</li>
-<li><a onclick="$('#logoutForm1').submit();"><i class="icon-switch2"></i> <span>Logout</span></a></li>
