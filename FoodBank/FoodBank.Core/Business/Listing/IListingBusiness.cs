@@ -7,6 +7,7 @@ using Aspose.Words;
 using Aspose.Words.Drawing;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Enum;
+using FoodBank.Core.Dto.Basket;
 using FoodBank.Core.Dto.Listing;
 
 namespace FoodBank.Core.Business.Listing
@@ -22,6 +23,8 @@ namespace FoodBank.Core.Business.Listing
 
         Task<ListingIndexModel> GetListingsByCompany(Guid id);
         Task<ListingIndexModel> GetListingsByCompanyBranch(Guid id);
+       
+        BasketAddModel GetAddBasketListing(Guid id);
     }
 
     public class ListingBusiness : IListingBusiness
@@ -112,7 +115,11 @@ namespace FoodBank.Core.Business.Listing
 
 
             if (companyId != Guid.Empty)
+
+            {
+                if (companyId != null)
                 listings = listings.Where(o => o.CompanyBranch.CompanyId == companyId.Value);
+            }
 
 
             if (companyBranchId != Guid.Empty)
@@ -167,6 +174,22 @@ namespace FoodBank.Core.Business.Listing
         public async Task<ListingIndexModel> GetListingsByCompanyBranch(Guid id)
         {
             return await GetListings(null, id, "", null, ListingStatus.NotSet);
+        }
+
+        public BasketAddModel GetAddBasketListing(Guid id)
+        {
+            var model = new BasketAddModel();
+
+            var listing = _appDbContext.Listings.FirstOrDefault(o => o.ListingId == id);
+            if (listing != null)
+            {
+                model.ListingId = id;
+                model.ProductName = listing.Product.ProductName;
+                
+
+            }
+
+            return model;
         }
     }
 }

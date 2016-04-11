@@ -4,7 +4,7 @@
 <li class="@(ViewBag.MenuItem == "Order" ? "active" : "")"><a href="@Url.Action("Index", "Orders", new {area=""})"><i class="icon-cart2"></i> <span>Claimed From Other Orders</span></a></li>
 <li class="@(ViewBag.MenuItem == "Order" ? "active" : "")"><a href="@Url.Action("Index", "Orders", new {area=""})"><i class="icon-truck"></i> <span>Send Food Orders</span></a></li>
 <li class="@(ViewBag.MenuItem == "Products" ? "active" : "")"><a href="@Url.Action("Index","Product", new {area=""})"><i class="icon-package"></i> <span>Products</span></a></li>
-<li class="@(ViewBag.MenuItem == "Listings" ? "active" : "")"><a href="@Url.Action("Index","Listings", new {area=""})"><i class="icon-indent-increase"></i> <span>Claim Food</span></a></li>
+<li class="@(ViewBag.MenuItem == "ClaimListings" ? "active" : "")"><a href="@Url.Action("Index","ClaimListing", new {area=""})"><i class="icon-indent-increase"></i> <span>Claim Food</span></a></li>
 <li class="@(ViewBag.MenuItem == "Listings" ? "active" : "")"><a href="@Url.Action("Index","Listings", new {area=""})"><i class="icon-indent-decrease"></i> <span>Listings</span></a></li>
 
 <li>

@@ -187,9 +187,9 @@
     <Compile Include="Mail\Model\BaseMailModel.cs" />
     <Compile Include="Mail\Model\ErrorLogMailModel.cs" />
     <Compile Include="Mail\Model\ResetPasswordMailModel.cs" />
-    <Compile Include="Migrations\201604061734163_INIT.cs" />
-    <Compile Include="Migrations\201604061734163_INIT.Designer.cs">
-      <DependentUpon>201604061734163_INIT.cs</DependentUpon>
+    <Compile Include="Migrations\201604112053367_intit.cs" />
+    <Compile Include="Migrations\201604112053367_intit.Designer.cs">
+      <DependentUpon>201604112053367_intit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,8 +212,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604061734163_INIT.resx">
-      <DependentUpon>201604061734163_INIT.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604112053367_intit.resx">
+      <DependentUpon>201604112053367_intit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

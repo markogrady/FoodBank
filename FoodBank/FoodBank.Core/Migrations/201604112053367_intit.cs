@@ -3,29 +3,56 @@ namespace FoodBank.Core.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class INIT : DbMigration
+    public partial class intit : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Companies",
+                "dbo.BasketItems",
                 c => new
                     {
-                        CompanyId = c.Guid(nullable: false),
-                        CompanyName = c.String(),
-                        CompanyType = c.Int(nullable: false),
-                        LogoUrl = c.String(),
-                        Address1 = c.String(),
-                        Address2 = c.String(),
-                        Address3 = c.String(),
-                        TownCity = c.String(),
-                        County = c.Int(nullable: false),
-                        PostCode = c.String(),
-                        ContactName = c.String(),
-                        ContactPhoneNumber = c.String(),
-                        ContactEmailAddress = c.String(),
+                        BasketItemId = c.Guid(nullable: false),
+                        Quantity = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ListingId = c.Guid(nullable: false),
+                        BasketId = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => t.CompanyId);
+                .PrimaryKey(t => t.BasketItemId)
+                .ForeignKey("dbo.Baskets", t => t.BasketId)
+                .ForeignKey("dbo.Listings", t => t.ListingId)
+                .Index(t => t.ListingId)
+                .Index(t => t.BasketId);
+            
+            CreateTable(
+                "dbo.Baskets",
+                c => new
+                    {
+                        BasketId = c.Guid(nullable: false),
+                        CompanyUserId = c.Guid(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.BasketId);
+            
+            CreateTable(
+                "dbo.Listings",
+                c => new
+                    {
+                        ListingId = c.Guid(nullable: false),
+                        CompanyReference = c.String(),
+                        ListingName = c.String(),
+                        Description = c.String(),
+                        Quantity = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        UseByDate = c.DateTime(),
+                        ListingStatus = c.Int(nullable: false),
+                        ConditionType = c.Int(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
+                        CompanyBranchId = c.Guid(nullable: false),
+                        ProductId = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => t.ListingId)
+                .ForeignKey("dbo.CompanyBranches", t => t.CompanyBranchId)
+                .ForeignKey("dbo.Products", t => t.ProductId)
+                .Index(t => t.CompanyBranchId)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.CompanyBranches",
@@ -87,36 +114,24 @@ namespace FoodBank.Core.Migrations
                 .Index(t => t.ListingId);
             
             CreateTable(
-                "dbo.Listings",
+                "dbo.Companies",
                 c => new
                     {
-                        ListingId = c.Guid(nullable: false),
-                        CompanyReference = c.String(),
-                        ListingName = c.String(),
-                        Description = c.String(),
-                        Quantity = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        UseByDate = c.DateTime(),
-                        ListingStatus = c.Int(nullable: false),
-                        ConditionType = c.Int(nullable: false),
-                        CreationDate = c.DateTime(nullable: false),
-                        CompanyBranchId = c.Guid(nullable: false),
-                        ProductId = c.Guid(nullable: false),
+                        CompanyId = c.Guid(nullable: false),
+                        CompanyName = c.String(),
+                        CompanyType = c.Int(nullable: false),
+                        LogoUrl = c.String(),
+                        Address1 = c.String(),
+                        Address2 = c.String(),
+                        Address3 = c.String(),
+                        TownCity = c.String(),
+                        County = c.Int(nullable: false),
+                        PostCode = c.String(),
+                        ContactName = c.String(),
+                        ContactPhoneNumber = c.String(),
+                        ContactEmailAddress = c.String(),
                     })
-                .PrimaryKey(t => t.ListingId)
-                .ForeignKey("dbo.CompanyBranches", t => t.CompanyBranchId)
-                .ForeignKey("dbo.Products", t => t.ProductId)
-                .Index(t => t.CompanyBranchId)
-                .Index(t => t.ProductId);
-            
-            CreateTable(
-                "dbo.Products",
-                c => new
-                    {
-                        ProductId = c.Guid(nullable: false),
-                        ProductName = c.String(),
-                        Description = c.String(),
-                    })
-                .PrimaryKey(t => t.ProductId);
+                .PrimaryKey(t => t.CompanyId);
             
             CreateTable(
                 "dbo.CompanyUsers",
@@ -198,6 +213,16 @@ namespace FoodBank.Core.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        ProductId = c.Guid(nullable: false),
+                        ProductName = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.ProductId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -226,7 +251,10 @@ namespace FoodBank.Core.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.BasketItems", "ListingId", "dbo.Listings");
+            DropForeignKey("dbo.Listings", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Orders", "SupplierId", "dbo.CompanyBranches");
+            DropForeignKey("dbo.Listings", "CompanyBranchId", "dbo.CompanyBranches");
             DropForeignKey("dbo.CompanyUsers", "CompanyBranchId", "dbo.CompanyBranches");
             DropForeignKey("dbo.CompanyUsers", "CompanyId", "dbo.Companies");
             DropForeignKey("dbo.CompanyUsers", "CompanyUserId", "dbo.AspNetUsers");
@@ -236,9 +264,8 @@ namespace FoodBank.Core.Migrations
             DropForeignKey("dbo.CompanyBranches", "CompanyId", "dbo.Companies");
             DropForeignKey("dbo.Orders", "CustomerId", "dbo.CompanyBranches");
             DropForeignKey("dbo.OrderItems", "OrderId", "dbo.Orders");
-            DropForeignKey("dbo.Listings", "ProductId", "dbo.Products");
             DropForeignKey("dbo.OrderItems", "ListingId", "dbo.Listings");
-            DropForeignKey("dbo.Listings", "CompanyBranchId", "dbo.CompanyBranches");
+            DropForeignKey("dbo.BasketItems", "BasketId", "dbo.Baskets");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -248,26 +275,30 @@ namespace FoodBank.Core.Migrations
             DropIndex("dbo.CompanyUsers", new[] { "CompanyBranchId" });
             DropIndex("dbo.CompanyUsers", new[] { "CompanyId" });
             DropIndex("dbo.CompanyUsers", new[] { "CompanyUserId" });
-            DropIndex("dbo.Listings", new[] { "ProductId" });
-            DropIndex("dbo.Listings", new[] { "CompanyBranchId" });
             DropIndex("dbo.OrderItems", new[] { "ListingId" });
             DropIndex("dbo.OrderItems", new[] { "OrderId" });
             DropIndex("dbo.Orders", new[] { "CustomerId" });
             DropIndex("dbo.Orders", new[] { "SupplierId" });
             DropIndex("dbo.CompanyBranches", new[] { "CompanyId" });
+            DropIndex("dbo.Listings", new[] { "ProductId" });
+            DropIndex("dbo.Listings", new[] { "CompanyBranchId" });
+            DropIndex("dbo.BasketItems", new[] { "BasketId" });
+            DropIndex("dbo.BasketItems", new[] { "ListingId" });
             DropTable("dbo.Submissions");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Products");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.CompanyUsers");
-            DropTable("dbo.Products");
-            DropTable("dbo.Listings");
+            DropTable("dbo.Companies");
             DropTable("dbo.OrderItems");
             DropTable("dbo.Orders");
             DropTable("dbo.CompanyBranches");
-            DropTable("dbo.Companies");
+            DropTable("dbo.Listings");
+            DropTable("dbo.Baskets");
+            DropTable("dbo.BasketItems");
         }
     }
 }

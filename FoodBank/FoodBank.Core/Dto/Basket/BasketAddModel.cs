@@ -11,5 +11,6 @@ namespace FoodBank.Core.Dto.Basket
         public Guid CompanyUserId { get; set; }
         public Guid ListingId { get; set; }
         public decimal Quantity { get; set; }
+        public string ProductName { get; set; }
     }
 }

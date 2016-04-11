@@ -7,13 +7,13 @@ namespace FoodBank.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class INIT : IMigrationMetadata
+    public sealed partial class intit : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(INIT));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intit));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604061734163_INIT"; }
+            get { return "201604112053367_intit"; }
         }
         
         string IMigrationMetadata.Source

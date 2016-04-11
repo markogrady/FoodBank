@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Model;
 using FoodBank.Core.Dto.Basket;
@@ -26,7 +27,26 @@ namespace FoodBank.Core.Business.Basket
 
         public BasketEditModel GetBasket(Guid id)
         {
-            throw new NotImplementedException();
+            var model = new BasketEditModel();
+            var basket = _appDbContext.Baskets.FirstOrDefault(o => o.CompanyUserId == id);
+            if (basket != null)
+            {
+                foreach (var basketItem in basket.BasketItems)
+                {
+                model.BasketItemModels.Add(new BasketItemModel()
+                {
+                    BasketItemId = basketItem.BasketItemId,
+                    ProductName = basketItem.Listing.Product.ProductName,
+                    SupplierBranch = basketItem.Listing.CompanyBranch.CompanyBranchName,
+                    Quantity = basketItem.Quantity
+                });
+
+
+                }
+
+            }
+
+            return model;
         }
 
         public void AddItem(BasketAddModel model)
@@ -38,15 +58,18 @@ namespace FoodBank.Core.Business.Basket
                 isNew = true;
                 basket = new Data.Model.Basket();
                 basket.BasketId = Guid.NewGuid();
+                basket.CreationDate = DateTime.UtcNow;
+                basket.CompanyUserId = model.CompanyUserId;
             }
 
             var basketItem = basket.BasketItems.FirstOrDefault(o => o.ListingId == model.ListingId);
             if (basketItem == null)
             {
                 basketItem = new BasketItem();
-                basketItem.BasketId = Guid.NewGuid();
+                basketItem.BasketItemId = Guid.NewGuid();
                 basketItem.ListingId = model.ListingId;
                 basketItem.Quantity = model.Quantity;
+                basket.BasketItems.Add(basketItem);
             }
             else
             {

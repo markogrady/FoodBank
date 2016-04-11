@@ -225,7 +225,6 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\ClaimListingController.cs" />
     <Compile Include="Controllers\ListingsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -2988,6 +2987,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Views\Checkout\Index.cshtml" />
+    <None Include="Views\ClaimListing\AddToBasket.cshtml" />
+    <None Include="Views\ClaimListing\Basket.cshtml" />
+    <None Include="Views\ClaimListing\Index.cshtml" />
     <None Include="Views\Listings\Create.cshtml" />
     <None Include="Views\Listings\Edit.cshtml" />
     <None Include="Views\Listings\Index.cshtml" />
@@ -3057,7 +3059,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Views\ClaimListing\" />
     <Folder Include="Views\Setting\" />
   </ItemGroup>
   <ItemGroup>

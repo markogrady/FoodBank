@@ -1,0 +1,77 @@
+﻿@model FoodBank.Core.Dto.Basket.BasketEditModel
+
+@{
+    ViewBag.Title = "Basket";
+    ViewBag.MenuItem = "ClaimListing";
+}
+@section pagejs{
+    <script type="text/javascript" src="/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="/assets/js/plugins/forms/selects/select2.min.js"></script>
+
+    <script type="text/javascript" src="/assets/js/core/app.js"></script>
+    <script type="text/javascript" src="/assets/js/pages/datatables_advanced.js"></script>
+
+    @* @Html.Partial("~/Views/Shared/Modal/DeleteModal.cshtml", Url.Action("Remove", "ClaimListing"))*@
+
+}
+<!-- Page header -->
+@Html.Partial("Page/PageHeader")
+<!-- /page header -->
+<!-- Content area -->
+<div class="content">
+    <!-- Page length options -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Basket</h5>
+            <div class="heading-elements">
+
+                <div class="text-right">
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-body">
+            Basket
+        </div>
+        <table class="table datatable-show-all">
+            <thead>
+            <tr>
+                <th>BasketItemId</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Supplier Branch</th>
+
+
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var item in Model.BasketItemModels)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Basket", "ClaimListing", new {id = item.BasketItemId})">@item.BasketItemId</a></td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.SupplierBranch</td>
+
+
+                    <td class="text-center">
+                        <ul class="icons-list">
+
+                            <li class="text-primary-600"><a href="@Url.Action("Basket", "ClaimListing", new {id = @item.BasketItemId, area = ""})"><i class="icon-pencil7"></i></a></li>
+                            <li class="text-danger-600"><a href="" class="deleteitem" data-target="#modaldelete" data-toggle="modal" data-id="@item.BasketItemId"><i class="icon-trash"></i></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /page length options -->
+
+
+</div>
+<!-- /content area -->
