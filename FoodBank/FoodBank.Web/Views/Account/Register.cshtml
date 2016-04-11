@@ -24,7 +24,7 @@
                         <div class="form-group has-feedback">
 
                             <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @type = "email", @placeholder = "Company Name" })
+                                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @placeholder = "Company Name" })
                                 @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
                                     <i class="icon-user-plus text-muted"></i>
@@ -34,7 +34,107 @@
                         <div class="form-group has-feedback">
 
                             <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "EmailAddress" })
+                                @Html.TextBoxFor(m => m.LogoUrl, new { @class = "form-control", @placeholder = "Logo URL" })
+                                @Html.ValidationMessageFor(m => m.LogoUrl, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyAddress1, new { @class = "form-control", @placeholder = "Company Address" })
+                                @Html.ValidationMessageFor(m => m.CompanyAddress1, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyAddress2, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CompanyAddress2, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyAddress3, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CompanyAddress3, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyTownCity, new { @class = "form-control", @placeholder = "Town / City" })
+                                @Html.ValidationMessageFor(m => m.CompanyTownCity, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyCounty, new { @class = "form-control", @type = "County", @placeholder = "County" })
+                                @Html.ValidationMessageFor(m => m.CompanyCounty, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyContactName, new { @class = "form-control", @placeholder = "Contact Name" })
+                                @Html.ValidationMessageFor(m => m.CompanyContactName, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyContactPhoneNumber, new { @class = "form-control", @placeholder = "Contact Phone Number" })
+                                @Html.ValidationMessageFor(m => m.CompanyContactPhoneNumber, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.CompanyContactEmailAddress, new { @class = "form-control", @placeholder = "Contact Email Address" })
+                                @Html.ValidationMessageFor(m => m.CompanyContactEmailAddress, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.LogoUrl, new { @class = "form-control", @placeholder = "Logo URL" })
+                                @Html.ValidationMessageFor(m => m.LogoUrl, "", new { @class = "text-danger" })
+                                <div class="form-control-feedback">
+                                    <i class="icon-user-plus text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "Email Address" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
                                     <i class="icon-user-plus text-muted"></i>
@@ -45,7 +145,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "FirstName" })
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First Name" })
                                     @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                                     <div class="form-control-feedback">
                                         <i class="icon-user-check text-muted"></i>
@@ -55,7 +155,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "LastName" })
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last Name" })
                                     @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                                     <div class="form-control-feedback">
                                         <i class="icon-user-check text-muted"></i>
