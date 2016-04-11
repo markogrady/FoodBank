@@ -27,47 +27,38 @@
                                 @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @placeholder = "Company Name" })
                                 @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-group has-feedback">
 
                             <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.LogoUrl, new { @class = "form-control", @placeholder = "Logo URL" })
-                                @Html.ValidationMessageFor(m => m.LogoUrl, "", new { @class = "text-danger" })
-                                <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group has-feedback">
-
-                            <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.CompanyAddress1, new { @class = "form-control", @placeholder = "Company Address" })
+                                @Html.TextBoxFor(m => m.CompanyAddress1, new { @class = "form-control", @placeholder = "Company Address Line 1" })
                                 @Html.ValidationMessageFor(m => m.CompanyAddress1, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
                         <div class="form-group has-feedback">
 
                             <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.CompanyAddress2, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.CompanyAddress2, new { @class = "form-control", @placeholder = "Company Address Line 2" })
                                 @Html.ValidationMessageFor(m => m.CompanyAddress2, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
                         <div class="form-group has-feedback">
 
                             <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.CompanyAddress3, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.CompanyAddress3, new { @class = "form-control", @placeholder = "Company Address Line 3" })
                                 @Html.ValidationMessageFor(m => m.CompanyAddress3, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -77,7 +68,7 @@
                                 @Html.TextBoxFor(m => m.CompanyTownCity, new { @class = "form-control", @placeholder = "Town / City" })
                                 @Html.ValidationMessageFor(m => m.CompanyTownCity, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -87,7 +78,7 @@
                                 @Html.TextBoxFor(m => m.CompanyCounty, new { @class = "form-control", @type = "County", @placeholder = "County" })
                                 @Html.ValidationMessageFor(m => m.CompanyCounty, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -97,7 +88,7 @@
                                 @Html.TextBoxFor(m => m.CompanyContactName, new { @class = "form-control", @placeholder = "Contact Name" })
                                 @Html.ValidationMessageFor(m => m.CompanyContactName, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -107,7 +98,7 @@
                                 @Html.TextBoxFor(m => m.CompanyContactPhoneNumber, new { @class = "form-control", @placeholder = "Contact Phone Number" })
                                 @Html.ValidationMessageFor(m => m.CompanyContactPhoneNumber, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -117,7 +108,7 @@
                                 @Html.TextBoxFor(m => m.CompanyContactEmailAddress, new { @class = "form-control", @placeholder = "Contact Email Address" })
                                 @Html.ValidationMessageFor(m => m.CompanyContactEmailAddress, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -127,7 +118,7 @@
                                 @Html.TextBoxFor(m => m.LogoUrl, new { @class = "form-control", @placeholder = "Logo URL" })
                                 @Html.ValidationMessageFor(m => m.LogoUrl, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -137,7 +128,7 @@
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "Email Address" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
-                                    <i class="icon-user-plus text-muted"></i>
+                                    @*<i class="icon-user-plus text-muted"></i>*@
                                 </div>
                             </div>
                         </div>
@@ -201,8 +192,7 @@
                             <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
                         </div>
                         <div class="text-center">
-                            <h6>Are you a Accounant? <a href="@Url.Action("RegisterAccountant")"> click here</a></h6>
-                            <h6>Are you a Affiliate? <a href="@Url.Action("RegisterAffiliate")"> click here</a></h6>
+                           
                         </div>
                     </div>
                 </div>
