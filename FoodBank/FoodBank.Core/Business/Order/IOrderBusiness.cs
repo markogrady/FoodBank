@@ -100,7 +100,7 @@ namespace FoodBank.Core.Business.Order
             //todo anonymous type it
             var model = new OrderIndexModel();
 
-            var orders = _appDbContext.Orders.Where(o => o.Customer.CompanyId == id);
+            var orders = await _appDbContext.Orders.Where(o => o.Customer.CompanyId == id).ToListAsync();
             foreach (var order in orders)
             {
                 model.OrderIndexItemModels.Add(new OrderIndexItemModel()

@@ -52,7 +52,7 @@
                 @foreach (var item in Model.ListingIndexItemModels)
             {
                     <tr>
-                        <td><a href="@Url.Action("Edit", "Listings", new { id = item.ListingId})">@item.CompanyReference</a></td>
+                        <td><a href="@Url.Action("AddToBasket", "ClaimListing", new { id = item.ListingId})">@item.CompanyReference</a></td>
 
                         <td>@item.ListingName</td>
                         <td>@item.TotalQuantity</td>

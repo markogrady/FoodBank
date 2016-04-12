@@ -185,10 +185,7 @@ namespace FoodBank.Core.Business.Listing
             {
                 model.ListingId = id;
                 model.ProductName = listing.Product.ProductName;
-                
-
             }
-
             return model;
         }
     }
