@@ -51,25 +51,52 @@ namespace FoodBank.Core.Business.Company
                 Address3 = model.CompanyAddress3,
                 TownCity = model.CompanyTownCity,
                 County = model.CompanyCounty,
-                ContactEmailAddress = model.CompanyTownCity,
+                PostCode = model.CompanyPostCode,
+                ContactEmailAddress = model.CompanyContactEmailAddress,
                 ContactName = model.CompanyContactName,
                 ContactPhoneNumber = model.CompanyContactPhoneNumber,
             };
 
-            Company1.CompanyBranches.Add(
-                new CompanyBranch()
-                {
-                    CompanyBranchId = Guid.NewGuid(),
-                    CompanyBranchName = model.CompanyBranchName,
-                    Address1 = model.CompanyBranchAddress1,
-                    Address2 = model.CompanyBranchAddress2,
-                    Address3 = model.CompanyBranchAddress3,
-                    TownCity = model.CompanyBranchTownCity,
-                    County = model.CompanyBranchCounty,
-                    ContactEmailAddress = model.CompanyBranchTownCity,
-                    ContactName = model.CompanyBranchContactName,
-                    ContactPhoneNumber = model.CompanyBranchContactPhoneNumber,
-                });
+            //If Branch Name is blank then this is a new Company rather than branch - create a head office record
+            //from Company details as a branch entry.  Otherwise update branch using branch details.
+            //Not sure if this is correct way of doing this, would it not be better to ensure the branch details
+            //are correct before comping into this method????  What is the best standard for this?????
+            if (model.CompanyBranchName == null)
+            {
+                Company1.CompanyBranches.Add(
+                    new CompanyBranch()
+                    {
+                        CompanyBranchId = Guid.NewGuid(),
+                        CompanyBranchName = "Head office",
+                        Address1 = model.CompanyAddress1,
+                        Address2 = model.CompanyAddress2,
+                        Address3 = model.CompanyAddress3,
+                        TownCity = model.CompanyTownCity,
+                        County = model.CompanyCounty,
+                        PostCode = model.CompanyPostCode,
+                        ContactEmailAddress = model.CompanyContactEmailAddress,
+                        ContactName = model.CompanyContactName,
+                        ContactPhoneNumber = model.CompanyContactPhoneNumber,
+                    });
+            }
+            else
+            {
+                Company1.CompanyBranches.Add(
+                    new CompanyBranch()
+                    {
+                        CompanyBranchId = Guid.NewGuid(),
+                        CompanyBranchName = model.CompanyBranchName,
+                        Address1 = model.CompanyBranchAddress1,
+                        Address2 = model.CompanyBranchAddress2,
+                        Address3 = model.CompanyBranchAddress3,
+                        TownCity = model.CompanyBranchTownCity,
+                        County = model.CompanyBranchCounty,
+                        PostCode = model.CompanyBranchPostCode,
+                        ContactEmailAddress = model.CompanyBranchContactEmailAddress,
+                        ContactName = model.CompanyBranchContactName,
+                        ContactPhoneNumber = model.CompanyBranchContactPhoneNumber,
+                    });
+            }
 
             _appDbContext.Companies.Add(Company1);
             await _appDbContext.SaveChangesAsync();
