@@ -35,10 +35,7 @@ namespace FoodBank.Web.Controllers
         }
 
 
-        public ActionResult Detail(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public ActionResult Edit()
         {
