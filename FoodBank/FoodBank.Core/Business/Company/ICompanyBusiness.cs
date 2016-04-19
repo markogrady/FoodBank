@@ -161,9 +161,24 @@ namespace FoodBank.Core.Business.Company
             }
         }
 
-        public Task<CompanyIndexModel> GetCompanies()
+        public async Task<CompanyIndexModel> GetCompanies()
         {
-            throw new NotImplementedException();
+            var model = new CompanyIndexModel();
+
+            var companies = await _appDbContext.Companies.ToListAsync();
+            foreach (var company in companies)
+            {
+               model.CompanyIndexItemModels.Add(new CompanyIndexItemModel()
+               {
+                   CompanyId = company.CompanyId,
+                   CompanyName = company.CompanyName,
+                   ContactPhoneNumber = company.ContactPhoneNumber,
+                   ContactName = company.ContactName,
+                   LogoUrl = company.LogoUrl
+               });
+            }
+
+            return model;
         }
 
         public async Task<CompanyEditModel> GetCompany(Guid id)
@@ -212,14 +227,48 @@ namespace FoodBank.Core.Business.Company
             return model;
         }
 
-        public Task<CompanyBranchIndexModel> GetCompanyBranches(Guid id)
+        public async Task<CompanyBranchIndexModel> GetCompanyBranches(Guid id)
         {
-            throw new NotImplementedException();
+            var model = new CompanyBranchIndexModel();
+
+            var company = await _appDbContext.Companies.FirstOrDefaultAsync(o => o.CompanyId == id);
+            foreach (var companyBranch in company.CompanyBranches)
+            {
+                model.CompanyBranchIndexItemModels.Add(new CompanyBranchIndexItemModel()
+                {
+
+                    CompanyBranchId = companyBranch.CompanyBranchId,
+                    ContactPhoneNumber = companyBranch.ContactPhoneNumber,
+                    TownCity = companyBranch.TownCity,
+                    CompanyBranchName = companyBranch.CompanyBranchName,
+                    County = companyBranch.County,
+                    ContactName = companyBranch.ContactName,
+                    ContactEmailAddress = companyBranch.ContactEmailAddress,
+                    PostCode = companyBranch.PostCode,
+                });
+            }
+            return model;
         }
 
-        public Task<CompanyBranchEditModel> GetCompanyBranch(Guid id)
+        public async Task<CompanyBranchEditModel> GetCompanyBranch(Guid id)
         {
-            throw new NotImplementedException();
+            var model = new CompanyBranchEditModel();
+            var companyBranch = await _appDbContext.CompanyBranches.FirstOrDefaultAsync(o => o.CompanyBranchId == id);
+            if (companyBranch != null)
+            {
+                model.CompanyBranchId = companyBranch.CompanyBranchId;
+                model.CompanyBranchName = companyBranch.CompanyBranchName;
+                model.Address1 = companyBranch.Address1;
+                model.Address2 = companyBranch.Address2;
+                model.Address3 = companyBranch.Address3;
+                model.ContactEmailAddress = companyBranch.ContactEmailAddress;
+                model.ContactName = companyBranch.ContactName;
+                model.ContactPhoneNumber = companyBranch.ContactPhoneNumber;
+                model.County = companyBranch.County;
+                model.TownCity = companyBranch.TownCity;
+                model.PostCode = companyBranch.PostCode;
+            }
+            return model;
         }
 
         public async Task AddCompanyUser(AppUser user, Guid companyId)
