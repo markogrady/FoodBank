@@ -31,6 +31,7 @@ namespace FoodBank.Core.Business.Basket
             var basket = _appDbContext.Baskets.FirstOrDefault(o => o.CompanyUserId == id);
             if (basket != null)
             {
+                model.BasketId = basket.BasketId;
                 foreach (var basketItem in basket.BasketItems)
                 {
                 model.BasketItemModels.Add(new BasketItemModel()

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using FoodBank.Core.Business.Order;
 using FoodBank.Web.Controllers;
 
-namespace FoodBank.Web.Areas.Supplier.Controllers
+namespace FoodBank.Web.Controllers
 {
     public class OrdersController : BaseFoodController
     {
@@ -33,7 +33,7 @@ namespace FoodBank.Web.Areas.Supplier.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            throw new NotImplementedException();
+            var model = _orderBusiness.GetOrderById(id);
         }
     }
 }

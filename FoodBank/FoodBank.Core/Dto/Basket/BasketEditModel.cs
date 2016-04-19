@@ -5,6 +5,7 @@ namespace FoodBank.Core.Dto.Basket
 {
     public class BasketEditModel
     {
+        public Guid BasketId { get; set; }
         public BasketEditModel()
         {
             BasketItemModels = new List<BasketItemModel>();

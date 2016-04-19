@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web.Mvc;
-using Aspose.Words;
 using FoodBank.Core.Data;
-using FoodBank.Core.Data.Enum;
 using FoodBank.Core.Data.Model;
 using FoodBank.Core.Dto.Company;
-using FoodBank.Core.Seed;
 
 namespace FoodBank.Core.Business.Company
 {

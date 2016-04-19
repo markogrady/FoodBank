@@ -168,6 +168,7 @@
     <Compile Include="Dto\Listing\ListingCreateModel.cs" />
     <Compile Include="Dto\Listing\ListingEditModel.cs" />
     <Compile Include="Dto\Listing\ListingIndexModel.cs" />
+    <Compile Include="Dto\Order\OrderEditModel.cs" />
     <Compile Include="Dto\Order\OrderIndexModel.cs" />
     <Compile Include="Dto\Company\CompanyBranchCreateModel.cs" />
     <Compile Include="Dto\Company\CompanyCreateModel.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Dto\Company\CompanyEditModel.cs" />
     <Compile Include="Dto\Company\CompanyBranchIndexModel.cs" />
     <Compile Include="Dto\Company\CompanyIndexModel.cs" />
+    <Compile Include="Dto\Order\OrderItemEditModel.cs" />
     <Compile Include="Dto\Product\ProductCreateModel.cs" />
     <Compile Include="Dto\Product\ProductEditModel.cs" />
     <Compile Include="Dto\Product\ProductIndexModel.cs" />

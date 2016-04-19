@@ -59,6 +59,9 @@ namespace FoodBank.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(OrderCreateFromBasketModel model)
         {
+            var basket =  _basketBusiness.GetBasket(AuthenticatedUser.UserId);
+            model.BasketId = basket.BasketId;
+            model.CustomerBranchId = AuthenticatedUser.AuthCompanyModel.CompanyBranchId;
             await _orderBusiness.CreateOrdersFromBasket(model);
             Success("Order(s) Created");
             return RedirectToAction("Index", "Orders");

@@ -18,6 +18,7 @@ namespace FoodBank.Core.Business.Order
         Task<OrderIndexModel> GetCompanyOrders(Guid id);
         Task<OrderIndexModel> GetCompanyBranchOrders(Guid id);
         Task CreateOrdersFromBasket(OrderCreateFromBasketModel model);
+        OrderEditModel GetOrderById(Guid id);
     }
 
     public class OrderBusiness : IOrderBusiness
@@ -163,7 +164,7 @@ namespace FoodBank.Core.Business.Order
                 {
                     var order = new Data.Model.Order();
                     order.OrderId = Guid.NewGuid();
-                    order.SupplierId = model.SupplierBranchId;
+                    order.SupplierId = basketGroup.BranchId;
                     order.CustomerId = model.CustomerBranchId;
                     order.CustomerOrderReference = model.CustomerOrderReference;
                     order.OrderStatus = OrderStatus.Open;
@@ -180,6 +181,65 @@ namespace FoodBank.Core.Business.Order
                 }
                 await _appDbContext.SaveChangesAsync();
             }
+        }
+
+        public OrderEditModel GetOrderById(Guid id)
+        {
+            var model = new OrderEditModel();
+            var order = _appDbContext.Orders.FirstOrDefault(o => o.OrderId == id);
+            if (order != null)
+            {
+                model.OrderId = order.OrderId;
+                model.SupplierId = order.SupplierId;
+                model.CreationDate = order.CreationDate;
+                model.CustomerOrderReference = order.CustomerOrderReference;
+                model.OrderStatus = order.OrderStatus;
+
+                model.SupplierBranchName = order.Supplier.CompanyBranchName;
+                model.SupplierAddress1 = order.Supplier.Address1;
+                model.SupplierAddress2 = order.Supplier.Address2;
+                model.SupplierAddress3 = order.Supplier.Address3;
+                model.SupplierTownCity = order.Supplier.TownCity;
+                model.SupplierCounty = order.Supplier.County;
+                model.SupplierPostCode = order.Supplier.PostCode;
+                model.SupplierContactEmailAddress= order.Supplier.ContactEmailAddress;
+                model.SupplierContactPhoneNumber= order.Supplier.ContactPhoneNumber;
+                model.SupplierContactName= order.Supplier.ContactName;
+
+                model.CustomerBranchName = order.Customer.CompanyBranchName;
+                model.CustomerAddress1 = order.Customer.Address1;
+                model.CustomerAddress2 = order.Customer.Address2;
+                model.CustomerAddress3 = order.Customer.Address3;
+                model.CustomerTownCity = order.Customer.TownCity;
+                model.CustomerCounty = order.Customer.County;
+                model.CustomerPostCode = order.Customer.PostCode;
+                model.CustomerContactEmailAddress = order.Customer.ContactEmailAddress;
+                model.CustomerContactPhoneNumber = order.Customer.ContactPhoneNumber;
+                model.CustomerContactName = order.Customer.ContactName;
+
+
+                foreach (var orderItem in order.OrderItems)
+                {
+                    model.OrderItems.Add(new OrderItemEditModel()
+                    {
+                        ProductId = orderItem.Listing.ProductId,
+                        ProductName = orderItem.Listing.Product.ProductName,
+                        OrderId = orderItem.OrderId,
+                        OrderItemId = orderItem.OrderItemId,
+                        OrderItemStatus = orderItem.OrderItemStatus,
+                        ListingId = orderItem.ListingId,
+                        CreationDate = orderItem.CreationDate,
+                        Quantity = orderItem.Quantity,
+                        CustomerItemReference = orderItem.CustomerItemReference,
+                        ConditionType = orderItem.Listing.ConditionType,
+                        CollectionDate = orderItem.CollectionDate,
+                        SupplierItemReference = orderItem.SupplierItemReference,
+                        UseByDate = orderItem.Listing.UseByDate
+
+                    });
+                }
+            }
+            return model;
         }
     }
 }
