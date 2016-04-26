@@ -53,9 +53,11 @@
             @foreach (var item in Model.CompanyIndexItemModels)
             {
                 <tr>
-                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.CompanyId</a></td>
-                    <td>@item.ContactName</td>
-                    <td>@item.ContactName</td>
+                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.LogoUrl</a></td>
+                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.CompanyName</a></td>
+                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.ContactName</a></td>
+                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.ContactPhoneNumber</a></td>
+                    <td><a></a></td>
 
 
                     <td class="text-center">

@@ -77,7 +77,7 @@
                         <div class="form-group has-feedback">
 
                             <div class="form-group has-feedback">
-                                @Html.TtcEnumDropDownFor(m => m.CompanyCounty,typeof (County),"Please select County",true)
+                                @Html.TtcEnumDropDownFor(m => m.CompanyCounty,typeof (County),"Please select County",false)
                                 @Html.ValidationMessageFor(m => m.CompanyCounty, "", new { @class = "text-danger" })
                                 <div class="form-control-feedback">
                                     @*<i class="icon-user-plus text-muted"></i>*@
