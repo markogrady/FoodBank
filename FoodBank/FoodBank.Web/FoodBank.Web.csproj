@@ -2993,6 +2993,7 @@
     <None Include="Views\Listings\Create.cshtml" />
     <None Include="Views\Listings\Edit.cshtml" />
     <None Include="Views\Listings\Index.cshtml" />
+    <None Include="Views\Orders\Edit.cshtml" />
     <None Include="Views\Orders\Index.cshtml" />
     <None Include="Views\Company\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

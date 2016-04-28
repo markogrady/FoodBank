@@ -142,9 +142,12 @@
     <Compile Include="Data\Enum\OrderStatus.cs" />
     <Compile Include="Data\Enum\SubmissionStatus.cs" />
     <Compile Include="Data\Enum\SubmissionType.cs" />
+    <Compile Include="Data\Model\Attribute.cs" />
+    <Compile Include="Data\Model\AttributeValue.cs" />
     <Compile Include="Data\Model\Basket.cs" />
     <Compile Include="Data\Model\Order.cs" />
     <Compile Include="Data\Model\Product.cs" />
+    <Compile Include="Data\Model\ProductAttribute.cs" />
     <Compile Include="Data\Model\Submission.cs" />
     <Compile Include="Dto\Basket\BasketAddModel.cs" />
     <Compile Include="Dto\Basket\BasketEditModel.cs" />

@@ -34,6 +34,7 @@ namespace FoodBank.Web.Controllers
         public ActionResult Edit(Guid id)
         {
             var model = _orderBusiness.GetOrderById(id);
+            return View(model);
         }
     }
 }

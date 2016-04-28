@@ -13,9 +13,9 @@ namespace FoodBank.Core.Seed
     {
         public static void SeedData(IAppDbContext context)
         {
-            var Companys = new List<Company>();
+            var companies = new List<Company>();
 
-           var Company1=  new Company()
+           var company1=  new Company()
             {
                CompanyName = "Tescways",
                 Address1 = "10 Northgate Street",
@@ -36,35 +36,35 @@ namespace FoodBank.Core.Seed
             var CompanyBranch5 = new CompanyBranch() {CompanyBranchId = SeedProp.SeedCompany1Branch5, CompanyBranchName = "Manchester",ContactName = "Peter Willis",ContactPhoneNumber = "08080 0000 000"};
             var CompanyBranch6 = new CompanyBranch() {CompanyBranchId = SeedProp.SeedCompany1Branch6, CompanyBranchName = "Leeds",ContactName = "Peter Willis",ContactPhoneNumber = "08080 0000 000"};
             var CompanyBranch7 = new CompanyBranch() {CompanyBranchId = SeedProp.SeedCompany1Branch7, CompanyBranchName = "Birmingham",ContactName = "Peter Willis",ContactPhoneNumber = "08080 0000 000"};
-            Company1.CompanyBranches.Add(CompanyBranch1);
-            Company1.CompanyBranches.Add(CompanyBranch2);
-            Company1.CompanyBranches.Add(CompanyBranch3);
-            Company1.CompanyBranches.Add(CompanyBranch4);
-            Company1.CompanyBranches.Add(CompanyBranch5);
-            Company1.CompanyBranches.Add(CompanyBranch6);
-            Company1.CompanyBranches.Add(CompanyBranch7);
-            Company1.CompanyBranches.Add(CompanyBranch1);
-            Companys.Add(Company1);
+            company1.CompanyBranches.Add(CompanyBranch1);
+            company1.CompanyBranches.Add(CompanyBranch2);
+            company1.CompanyBranches.Add(CompanyBranch3);
+            company1.CompanyBranches.Add(CompanyBranch4);
+            company1.CompanyBranches.Add(CompanyBranch5);
+            company1.CompanyBranches.Add(CompanyBranch6);
+            company1.CompanyBranches.Add(CompanyBranch7);
+            company1.CompanyBranches.Add(CompanyBranch1);
+            companies.Add(company1);
 
-            foreach (var Company in Companys)
+            foreach (var company in companies)
             {
-                var CompanyExist = context.Companies.Any(o => o.CompanyId == Company.CompanyId);
-                if (!CompanyExist)
+                var companyExist = context.Companies.Any(o => o.CompanyId == company.CompanyId);
+                if (!companyExist)
                 {
-                    context.Companies.Add(Company);
+                    context.Companies.Add(company);
                 }
             }
             context.SaveChanges();
 
             
-            var CompanyUser = context.CompanyUsers.FirstOrDefault(o => o.CompanyId == SeedProp.SeedCompany1 && o.CompanyUserId == SeedProp.UserCompany1);
-            if (CompanyUser == null)
+            var companyUser = context.CompanyUsers.FirstOrDefault(o => o.CompanyId == SeedProp.SeedCompany1 && o.CompanyUserId == SeedProp.UserCompany1);
+            if (companyUser == null)
             {
-                CompanyUser = new CompanyUser();
-                CompanyUser.CompanyUserId = SeedProp.UserCompany1;
-                CompanyUser.CompanyId = SeedProp.SeedCompany1;
-                CompanyUser.CompanyBranchId = SeedProp.SeedCompany1Branch1;
-                context.CompanyUsers.Add(CompanyUser);
+                companyUser = new CompanyUser();
+                companyUser.CompanyUserId = SeedProp.UserCompany1;
+                companyUser.CompanyId = SeedProp.SeedCompany1;
+                companyUser.CompanyBranchId = SeedProp.SeedCompany1Branch1;
+                context.CompanyUsers.Add(companyUser);
                 context.SaveChanges();
             }
         
