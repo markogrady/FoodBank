@@ -22,7 +22,6 @@ namespace FoodBank.Web.Controllers
         // GET: Supplier/Supplier
         public async Task<ActionResult> Index()
         {
-            //var model = await _companyBusiness.GetCompany(AuthenticatedUser.CompanyFirmId);
             var model = await _companyBusiness.GetCompanies();
             return View(model);
         }

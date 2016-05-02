@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FoodBank.Core.Data.Model
 {
-    class AttributeValue
+    public class AttributeValue
     {
     }
 }

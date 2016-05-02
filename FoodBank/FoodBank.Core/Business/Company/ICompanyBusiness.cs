@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using FoodBank.Core.Data;
 using FoodBank.Core.Data.Model;
@@ -161,7 +162,17 @@ namespace FoodBank.Core.Business.Company
         {
             var model = new CompanyIndexModel();
 
-            var companies = await _appDbContext.Companies.ToListAsync();
+            var companies = await _appDbContext.Companies.Select(o =>new  
+            {
+               CompanyId = o.CompanyId,
+               o.LogoUrl,
+               o.ContactName,
+               o.ContactPhoneNumber,
+               o.CompanyName,
+               BranchCount = o.CompanyBranches.Count
+                
+            }).ToListAsync();
+
             foreach (var company in companies)
             {
                model.CompanyIndexItemModels.Add(new CompanyIndexItemModel()
@@ -170,7 +181,8 @@ namespace FoodBank.Core.Business.Company
                    CompanyName = company.CompanyName,
                    ContactPhoneNumber = company.ContactPhoneNumber,
                    ContactName = company.ContactName,
-                   LogoUrl = company.LogoUrl
+                   LogoUrl = company.LogoUrl,
+                   BranchCount = company.BranchCount
                });
             }
 

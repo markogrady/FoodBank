@@ -32,5 +32,6 @@ namespace FoodBank.Core.Dto.Company
         public string ContactName { get; set; }
         public string ContactPhoneNumber { get; set; }
         public string ContactEmailAddress { get; set; }
+        public int BranchCount { get; set; }    
     }
 }

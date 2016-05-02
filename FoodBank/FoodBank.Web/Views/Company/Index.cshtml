@@ -3,8 +3,8 @@
 
 
 @{
-    ViewBag.Title = "Supplier";
-    ViewBag.MenuItem = "supplier";
+    ViewBag.Title = "Companies";
+    ViewBag.MenuItem = "Company";
 }
 @section pagejs{
     <script type="text/javascript" src="/assets/js/plugins/tables/datatables/datatables.min.js"></script>
@@ -53,17 +53,17 @@
             @foreach (var item in Model.CompanyIndexItemModels)
             {
                 <tr>
-                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.LogoUrl</a></td>
-                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.CompanyName</a></td>
-                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.ContactName</a></td>
-                    <td><a href="@Url.Action("Detail", "Company", new {id = item.CompanyId})">@item.ContactPhoneNumber</a></td>
+                    <td><a href="@Url.Action("Edit", "Company", new {id = item.CompanyId})">@item.LogoUrl</a></td>
+                    <td><a href="@Url.Action("Edit", "Company", new {id = item.CompanyId})">@item.CompanyName</a></td>
+                    <td><a href="@Url.Action("Edit", "Company", new {id = item.CompanyId})">@item.ContactName</a></td>
+                    <td><a href="@Url.Action("Edit", "Company", new {id = item.CompanyId})">@item.ContactPhoneNumber</a></td>
                     <td><a></a></td>
 
 
                     <td class="text-center">
                         <ul class="icons-list">
 
-                            <li class="text-primary-600"><a href="@Url.Action("Detail", "Company", new {id = @item.CompanyId, area = ""})"><i class="icon-pencil7"></i></a></li>
+                            <li class="text-primary-600"><a href="@Url.Action("Edit", "Company", new {id = @item.CompanyId, area = ""})"><i class="icon-pencil7"></i></a></li>
                          
                         </ul>
                     </td>
