@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FoodBank.Core.Data.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Attribute = FoodBank.Core.Data.Model.Attribute;
 
 namespace FoodBank.Core.Data
 {
@@ -48,12 +49,19 @@ namespace FoodBank.Core.Data
             return base.SaveChangesAsync();
         }
 
-         public IDbSet<Basket> Baskets { get; set; }
+        public IDbSet<Attribute> Attributes { get; set; }
+        public IDbSet<AttributeValue> AttributeValues { get; set; }
+
+        public IDbSet<Basket> Baskets { get; set; }
          public IDbSet<BasketItem> BasketItems { get; set; }
 
          public IDbSet<Product> Products { get; set; }
+         public IDbSet<ProductCategory> ProductCategories { get; set; }
+         public IDbSet<ProductCategoryItem> ProductCategoryItems { get; set; }
+         public IDbSet<ProductType> ProductTypes { get; set; }
+        public IDbSet<ProductTypeAttribute> ProductTypeAttributes { get; set; }
 
-         protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 

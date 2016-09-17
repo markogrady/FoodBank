@@ -21,9 +21,11 @@ namespace FoodBank.Core.Dto.Listing
         public Guid CompanyId { get; set; }
         public string CompanyName { get; set; }
         public string ListingName { get; set; }
+        public string ProductName { get; set; }
         public decimal TotalQuantity { get; set; }
         public decimal QuantityAvailable { get; set; }
         public string BranchName { get; set; }
         public string CompanyReference { get; set; }
+        public decimal? Price { get; set; }
     }
 }

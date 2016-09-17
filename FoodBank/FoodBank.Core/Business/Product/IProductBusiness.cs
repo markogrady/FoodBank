@@ -68,7 +68,14 @@ namespace FoodBank.Core.Business.Product
             var products = await _appDbContext.Products.ToListAsync();
             foreach (var product in products)
             {
-                model.ProductIndexItemModels.Add(new ProductIndexItemModel() { Description = product.Description, ProductId = product.ProductId, ProductName = product.ProductName });
+                model.ProductIndexItemModels.Add(new ProductIndexItemModel()
+                {
+                    Description = product.Description,
+                    ProductId = product.ProductId,
+                    ProductName = product.ProductName,
+                    ProductTypeName = product.ProductType.ProductTypeName
+                
+                });
             }
             return model;
         }

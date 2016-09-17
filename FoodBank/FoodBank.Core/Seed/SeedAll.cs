@@ -21,6 +21,8 @@ namespace FoodBank.Core.Seed
             SeedRole.CreateRoles(context);
             SeedUser.CreateUsers(context);
             SeedCompany.SeedData(context);
+            SeedProductType.SeedData(context);
+            SeedCategory.SeedData(context);
             SeedProduct.SeedData(context);
             SeedListing.SeedData(context);
         }

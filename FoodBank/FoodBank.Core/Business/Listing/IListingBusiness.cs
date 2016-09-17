@@ -138,11 +138,13 @@ namespace FoodBank.Core.Business.Listing
                     ListingId = listing.ListingId,
                     TotalQuantity = listing.Quantity,
                     QuantityAvailable = listing.Quantity - listing.OrderItems.Where(o => !(o.OrderItemStatus == OrderItemStatus.Confirmed || o.OrderItemStatus == OrderItemStatus.Completed)).Sum(o => o.Quantity),
-                    ListingName = listing.Product.ProductName,
+                    ListingName = listing.ListingName,
                     CompanyId = listing.CompanyBranch.CompanyId,
                     CompanyName = listing.CompanyBranch.Company.CompanyName,
                     BranchName = listing.CompanyBranch.CompanyBranchName,
-                    CompanyReference = listing.CompanyReference
+                    CompanyReference = listing.CompanyReference,
+                    ProductName = listing.Product.ProductName,
+                    Price = listing.Price,
                 });
             }
             return model;

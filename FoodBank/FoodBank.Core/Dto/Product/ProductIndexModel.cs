@@ -22,5 +22,6 @@ namespace FoodBank.Core.Dto.Product
         public string ProductName { get; set; }
         public string Description { get; set; }
 
+        public string ProductTypeName { get; set; }
     }
 }

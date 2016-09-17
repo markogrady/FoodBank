@@ -135,10 +135,13 @@
     <Compile Include="Business\DropDown\IDropDownBusiness.cs" />
     <Compile Include="Business\Listing\IListingBusiness.cs" />
     <Compile Include="Business\Order\IOrderBusiness.cs" />
+    <Compile Include="Business\Product\IAttributeBusiness.cs" />
     <Compile Include="Business\Product\IProductBusiness.cs" />
+    <Compile Include="Business\Product\IProductTypeBusiness.cs" />
     <Compile Include="Business\Submission\ISubmissionBusiness.cs" />
     <Compile Include="Data\Enum\CompanyType.cs" />
     <Compile Include="Data\Enum\ConditionType.cs" />
+    <Compile Include="Data\Enum\FieldType.cs" />
     <Compile Include="Data\Enum\OrderStatus.cs" />
     <Compile Include="Data\Enum\SubmissionStatus.cs" />
     <Compile Include="Data\Enum\SubmissionType.cs" />
@@ -148,7 +151,12 @@
     <Compile Include="Data\Model\Order.cs" />
     <Compile Include="Data\Model\Product.cs" />
     <Compile Include="Data\Model\ProductAttribute.cs" />
+    <Compile Include="Data\Model\ProductCategory.cs" />
+    <Compile Include="Data\Model\ProductCategoryItem.cs" />
+    <Compile Include="Data\Model\ProductType.cs" />
+    <Compile Include="Data\Model\ProductTypeAttribute.cs" />
     <Compile Include="Data\Model\Submission.cs" />
+    <Compile Include="Dto\Attribute\AttributeEditModel.cs" />
     <Compile Include="Dto\Basket\BasketAddModel.cs" />
     <Compile Include="Dto\Basket\BasketEditModel.cs" />
     <Compile Include="Dto\Basket\BasketSetQuanityModel.cs" />
@@ -180,6 +188,8 @@
     <Compile Include="Dto\Company\CompanyBranchIndexModel.cs" />
     <Compile Include="Dto\Company\CompanyIndexModel.cs" />
     <Compile Include="Dto\Order\OrderItemEditModel.cs" />
+    <Compile Include="Dto\ProductType\ProductTypeEditModel.cs" />
+    <Compile Include="Dto\ProductType\ProductTypeIndexModel.cs" />
     <Compile Include="Dto\Product\ProductCreateModel.cs" />
     <Compile Include="Dto\Product\ProductEditModel.cs" />
     <Compile Include="Dto\Product\ProductIndexModel.cs" />
@@ -192,19 +202,17 @@
     <Compile Include="Mail\Model\BaseMailModel.cs" />
     <Compile Include="Mail\Model\ErrorLogMailModel.cs" />
     <Compile Include="Mail\Model\ResetPasswordMailModel.cs" />
-    <Compile Include="Migrations\201604112053367_intit.cs" />
-    <Compile Include="Migrations\201604112053367_intit.Designer.cs">
-      <DependentUpon>201604112053367_intit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604281812209_price.cs" />
-    <Compile Include="Migrations\201604281812209_price.Designer.cs">
-      <DependentUpon>201604281812209_price.cs</DependentUpon>
+    <Compile Include="Migrations\201609041737379_Init.cs" />
+    <Compile Include="Migrations\201609041737379_Init.Designer.cs">
+      <DependentUpon>201609041737379_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seed\SeedAll.cs" />
+    <Compile Include="Seed\SeedCategory.cs" />
     <Compile Include="Seed\SeedListing.cs" />
     <Compile Include="Seed\SeedProduct.cs" />
+    <Compile Include="Seed\SeedProductType.cs" />
     <Compile Include="Seed\SeedProp.cs" />
     <Compile Include="Seed\SeedRole.cs" />
     <Compile Include="Seed\SeedCompanies.cs" />
@@ -221,12 +229,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604112053367_intit.resx">
-      <DependentUpon>201604112053367_intit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609041737379_Init.resx">
+      <DependentUpon>201609041737379_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604281812209_price.resx">
-      <DependentUpon>201604281812209_price.cs</DependentUpon>
-    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

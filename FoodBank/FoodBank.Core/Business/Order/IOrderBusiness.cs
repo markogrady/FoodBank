@@ -234,7 +234,10 @@ namespace FoodBank.Core.Business.Order
                         ConditionType = orderItem.Listing.ConditionType,
                         CollectionDate = orderItem.CollectionDate,
                         SupplierItemReference = orderItem.SupplierItemReference,
-                        UseByDate = orderItem.Listing.UseByDate
+                        UseByDate = orderItem.Listing.UseByDate,
+                        Price = orderItem.Listing.Price,
+                        TotalLinePrice = orderItem.Listing.Price * orderItem.Quantity
+
 
                     });
                 }

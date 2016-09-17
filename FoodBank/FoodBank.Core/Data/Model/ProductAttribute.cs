@@ -17,7 +17,8 @@ namespace FoodBank.Core.Data.Model
 
         public virtual Attribute Attribute { get; set; }
 
-
+        public Guid? AttributeValueId { get; set; }
+        public virtual AttributeValue AttributeValue { get; set; }
         public string Value { get; set; }
 
     }

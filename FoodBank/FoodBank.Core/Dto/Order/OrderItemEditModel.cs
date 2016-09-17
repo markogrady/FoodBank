@@ -24,6 +24,7 @@ namespace FoodBank.Core.Dto.Order
 
         public ConditionType ConditionType { get; set; }
         public DateTime? UseByDate { get; set; }
-
+        public decimal? TotalLinePrice { get; set; }
+        public decimal? Price { get; set; }
     }
 }

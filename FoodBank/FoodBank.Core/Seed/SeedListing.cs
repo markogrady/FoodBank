@@ -29,7 +29,8 @@ namespace FoodBank.Core.Seed
                 ListingName = "Doughnuts",
                 ListingStatus = ListingStatus.Open,
                 Quantity = 50,
-                UseByDate = DateTime.UtcNow.AddDays(10)
+                UseByDate = DateTime.UtcNow.AddDays(10),
+                Price = 30,
             };
 
             //listing1.OrderItems.Add(new OrderItem() { OrderItemStatus = OrderItemStatus.Requested, CreationDate = DateTime.UtcNow, OrderItemId = SeedProp.Listing1Claime1, Quantity = 10, BankReference = "rewrew" });
@@ -42,13 +43,15 @@ namespace FoodBank.Core.Seed
 
                 ListingId = SeedProp.SeedListing2,
                 CreationDate = DateTime.UtcNow,
-                Description = "Apples",
-                CompanyReference = "App1",
+                Description = "Pesticides",
+                CompanyReference = "Pest23",
                 CompanyBranchId = SeedProp.SeedCompany1Branch1,
-                ListingName = "Apples",
+                ListingName = "Pest2",
                 ListingStatus = ListingStatus.Open,
                 Quantity = 2000,
-                UseByDate = DateTime.UtcNow.AddDays(7)
+                UseByDate = DateTime.UtcNow.AddDays(7),
+                Price = 22.00m,
+
             });
 
             listings.Add(new Listing()
@@ -57,13 +60,14 @@ namespace FoodBank.Core.Seed
 
                 ListingId = SeedProp.SeedListing3,
                 CreationDate = DateTime.UtcNow,
-                Description = "CornFlakes Damaged Boxes",
-                CompanyReference = "App1",
+                Description = "Damaged Diesel",
+                CompanyReference = "GRN1",
                 CompanyBranchId = SeedProp.SeedCompany1Branch1,
-                ListingName = "Cornflakes",
+                ListingName = "Diesel",
                 ListingStatus = ListingStatus.Open,
                 Quantity = 2000,
-                UseByDate = DateTime.UtcNow.AddDays(200)
+                UseByDate = DateTime.UtcNow.AddDays(200),
+                Price=34.90m
             });
 
             listings.Add(new Listing()
@@ -72,12 +76,13 @@ namespace FoodBank.Core.Seed
 
                 ListingId = SeedProp.SeedListing4,
                 CreationDate = DateTime.UtcNow,
-                Description = "Coffee - Closed",
+                Description = "Diesel Closed",
                 CompanyReference = "Cff1",
                 CompanyBranchId = SeedProp.SeedCompany1Branch1,
-                ListingName = "Coffee",
+                ListingName = "diesel",
                 ListingStatus = ListingStatus.Closed,
                 Quantity = 0,
+                Price = 30.00m,
                 UseByDate = DateTime.UtcNow.AddDays(7)
             });
             listings.Add(new Listing()
@@ -86,10 +91,10 @@ namespace FoodBank.Core.Seed
 
                 ListingId = SeedProp.SeedListing5,
                 CreationDate = DateTime.UtcNow,
-                Description = "Mars bars",
-                CompanyReference = "Mbars1",
+                Description = "Grains",
+                CompanyReference = "GRN1",
                 CompanyBranchId = SeedProp.SeedCompany1Branch1,
-                ListingName = "Mars Bars",
+                ListingName = "Grain1",
                 ListingStatus = ListingStatus.Open,
                 Quantity = 2000,
                 UseByDate = DateTime.UtcNow.AddDays(7)
@@ -100,10 +105,10 @@ namespace FoodBank.Core.Seed
 
                 ListingId = SeedProp.SeedListing6,
                 CreationDate = DateTime.UtcNow,
-                Description = "Bread",
-                CompanyReference = "Bread1",
+                Description = "Grain",
+                CompanyReference = "GRN14",
                 CompanyBranchId = SeedProp.SeedCompany1Branch1,
-                ListingName = "Bread",
+                ListingName = "Grains",
                 ListingStatus = ListingStatus.Open,
                 Quantity = 2000,
                 UseByDate = DateTime.UtcNow.AddDays(7)
@@ -114,13 +119,14 @@ namespace FoodBank.Core.Seed
 
                 ListingId = SeedProp.SeedListing7,
                 CreationDate = DateTime.UtcNow,
-                Description = "Sausage Rolls",
-                CompanyReference = "SR1",
+                Description = "Grains",
+                CompanyReference = "GRN2",
                 CompanyBranchId = SeedProp.SeedCompany1Branch1,
-                ListingName = "Sausage Rolls",
+                ListingName = "Grains",
                 ListingStatus = ListingStatus.Open,
                 Quantity = 5,
-                UseByDate = DateTime.UtcNow.AddDays(7)
+                UseByDate = DateTime.UtcNow.AddDays(7),
+                Price = 40.50m
             });
 
             foreach (var listing in listings)

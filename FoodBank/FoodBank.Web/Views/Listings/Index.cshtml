@@ -7,10 +7,13 @@
 @section pagejs{
     <script type="text/javascript" src="/assets/js/plugins/tables/datatables/datatables.min.js"></script>
     <script type="text/javascript" src="/assets/js/plugins/forms/selects/select2.min.js"></script>
-
+<script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/app.js"></script>
-    <script type="text/javascript" src="/assets/js/pages/datatables_advanced.js"></script>
-
+  
+<script type="text/javascript" src="/assets/js/pages/datatables_extension_buttons_html5.js"></script>
     @* @Html.Partial("~/Views/Shared/Modal/DeleteModal.cshtml", Url.Action("Remove", "DocumentTemplate"))*@
 
 }
@@ -34,14 +37,16 @@
         <div class="panel-body">
             Listings
         </div>
-        <table class="table datatable-show-all">
+        <table class="table datatable-button-html5-columns">
             <thead>
                 <tr>
                     <th>Listing Id</th>
-                    <th>Litings Name</th>
+                    <th>Listings Name</th>
+                    <th>Product Name</th>
                     <th>Branch Name</th>
                     <th>Availble Qty</th>
                     <th>Total Quanitiy</th>
+                    <th>Price</th>
                   
 
                     <th class="text-center">Actions</th>
@@ -55,9 +60,11 @@
                         <td><a href="@Url.Action("Edit", "Listings", new { id = item.ListingId})">@item.CompanyReference</a></td>
 
                         <td>@item.ListingName</td>
+                        <td>@item.ProductName</td>
                         <td>@item.BranchName</td>
                         <td>@item.QuantityAvailable</td>
                         <td>@item.TotalQuantity</td>
+                        <td>@item.Price</td>
                         
 
                         <td class="text-center">
